@@ -11,15 +11,50 @@
     <script src="webjars/jquery/3.0.0/jquery.min.js" ></script>
 </head>
 <body>
-<h3>Welcome to Spring Boot MVC! I'm a .jsp file</h3>
-<h2>Hey ${name}!</h2>
-<form action="" method="get">
-    Enter your name: <input type="text" name="name">
-    <input type="submit">
-</form>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">HomePage - CRM Estate - Website Here</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="list_contacts">List of Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <h3>Welcome to Spring Boot MVC! I'm a .jsp file</h3>
 
-okay :) bien joué! Go to page
-<a href="dashboard">Dashboard</a>
-<a href="list_contacts">List of Contacts</a>
+            <button type="button" class="btn btn-primary" href="#">
+                New Contact
+            </button>
+
+            <button type="button" class="btn btn-primary" href="#">
+                New User
+            </button>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
