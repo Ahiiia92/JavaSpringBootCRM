@@ -21,9 +21,9 @@ public class Contact {
 
     public Contact() { super(); }
 
-    public Contact(long id, String firstName, String lastName, String email, String Address, String zipCode, String city) {
+    public Contact(String firstName, String lastName, String email, String Address, String zipCode, String city) {
         super();
-        this.id = id;
+//        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = Address;

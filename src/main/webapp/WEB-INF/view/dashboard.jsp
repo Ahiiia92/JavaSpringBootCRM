@@ -18,13 +18,17 @@
     <tr>
         <th>Name</th><th>Email</th><th>Country</th>
     </tr>
-<%--    <c:forEach var="contact" items="${contacts}">--%>
-<%--        <tr>--%>
-<%--            <td>${contact.name}</td>--%>
-<%--            <td>${contact.email}</td>--%>
-<%--            <td>${contact.country}</td>--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
+    <div th:if="${not #lists.isEmpty(contacts)}">
+        <tr th:each="contact : ${contacts}">
+            <td th:text="${cnotact.id}"></td>
+            <td th:text="${contact.firstName}"></td>
+            <td th:text="${contact.lastName}"></td>
+            <td th:text="${contact.address}"></td>
+            <td th:text="${contact.zipCode}"></td>
+            <td th:text="${contact.city}"></td>
+            <td th:text="${contact.email}"></td>
+        </tr>
+    </div>
 </table>
 
 <a href="index">Home</a>

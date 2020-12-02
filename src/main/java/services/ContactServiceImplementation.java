@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.ContactRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,14 @@ public class ContactServiceImplementation implements ContactService {
 
     @Override
     public List<Contact> getAllContact() {
-        return contactRepository.findAll();
+//        return contactRepository.findAll();
+        List<Contact> listContact = new ArrayList<>();
+
+        listContact.add(new Contact("Marry", "John", "marry.john@gmail.com", "rue de l'aglieser", "56531", "berlin"));
+        listContact.add(new Contact("jean", "John", "marry.drfg@gmail.com", "dsrfhjkjhr", "56531", "berlin"));
+        listContact.add(new Contact("John", "John", "dsgbjg.john@gmail.com", "dfghjdfg", "56531", "paris"));
+
+        return listContact;
     }
 
     @Override
