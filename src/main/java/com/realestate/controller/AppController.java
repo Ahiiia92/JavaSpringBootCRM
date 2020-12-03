@@ -1,16 +1,15 @@
-package com.example.demo;
+package com.realestate.controller;
 
-import model.Contact;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.realestate.model.Contact;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import services.ContactService;
-import services.ContactServiceImplementation;
+import com.realestate.services.ContactServiceImplementation;
 
 import java.util.List;
 
 @Controller
+@RequestMapping(value = {""})
 public class AppController {
 
     @RequestMapping("/dashboard")
@@ -34,9 +33,6 @@ public class AppController {
     public String listContacts(Model model) {
         ContactServiceImplementation implementation = new ContactServiceImplementation();
         List<Contact> contactList = implementation.getAllContact();
-
-        System.out.println(contactList);
-
         model.addAttribute("contacts", contactList);
 
         return "list_contacts";

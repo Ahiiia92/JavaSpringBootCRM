@@ -1,19 +1,25 @@
-package services;
+package com.realestate.services;
 
-import model.Contact;
+import com.realestate.model.Contact;
+import com.realestate.repository.ContactDAO;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import repository.ContactRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class ContactServiceImplementation implements ContactService {
     @Autowired
-    private ContactRepository contactRepository;
+    private ContactDAO contactRepository;
+
+    @Bean
+    public ContactDAO getContactRepository() {
+        return contactRepository;
+    }
 
     @Override
     public List<Contact> getAllContact() {

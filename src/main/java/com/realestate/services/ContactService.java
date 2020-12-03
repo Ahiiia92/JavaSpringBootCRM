@@ -1,11 +1,14 @@
-package services;
+package com.realestate.services;
 
-import model.Contact;
+import com.realestate.model.Contact;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 // The service layer is optional – still recommended to perform additional business logic if any.
 // Generally, we will connect with repository here for crud operations.
+
+@Service("contactService")
 public interface ContactService {
     List<Contact> getAllContact();
     Contact getContactById(long contactId);

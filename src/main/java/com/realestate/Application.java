@@ -1,18 +1,17 @@
-package com.example.demo;
+package com.realestate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 
+//@SpringBootApplication(scanBasePackages={"com.realestate", "com.realestate.controller", "com.realestate.model", "com.realestate.repository", "com.realestate.services"})
 @SpringBootApplication
-public class DemoApplication {
+public class Application {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
+        ApplicationContext ctx = SpringApplication.run(Application.class, args);
 
         System.out.println("Let's inspect the beans provided by Spring Boot:");
 
