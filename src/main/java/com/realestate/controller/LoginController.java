@@ -1,8 +1,10 @@
 package com.realestate.controller;
 
+import com.realestate.model.User;
 import com.realestate.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +22,12 @@ public class LoginController {
         }
         System.out.println("login unsuccessful: given " + username + " " + password);
         return "error";
+    }
+
+    @PostMapping(value = {"/login"})
+    public String processLogin(Model model) {
+        model.addAttribute("user", model);
+        return "success";
     }
 
     @GetMapping(value = {""})

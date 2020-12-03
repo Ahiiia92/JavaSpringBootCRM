@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard">Dashboard</a>
+                    <a class="nav-link" href="admin/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="list_contacts">List of Contact<span class="sr-only">(current)</span></a>

@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping(value = {""})
 public class AppController {
 
-    @RequestMapping("/dashboard")
+    @RequestMapping("/admin/dashboard")
     public String show() {
         return "dashboard";
     }
