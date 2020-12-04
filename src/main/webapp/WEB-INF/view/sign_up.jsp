@@ -1,12 +1,13 @@
 <%@ taglib prefix="th" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Contact List</title>
+    <title>Sign-Up</title>
     <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <script src="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
@@ -15,7 +16,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">CRM Estate</a>
+        <a class="navbar-brand" href="/">HomePage - CRM Estate - Website Here</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -24,8 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home
-                    </a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
@@ -43,31 +43,24 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col">
-            <h3>Contact list</h3>
-            ${contacts}
-            <br>
-            <br>
-            <a class="btn btn-primary" href="/new">New Contact</a>
-            <br>
-            <br>
-            <table border="1" cellpadding="10">
-                <tr>
-                    <th>ID</th><th>Firstname</th><th>Lastname</th><th>Email</th><th>Address</th><th>ZipCode</th><th>City</th><th>Account Manager</th><th>Edit</th><th>Delete</th>
-                </tr>
-                <c:forEach var="contact" items="${contacts}">
-                    <tr>
-                        <td>${contact.id}</td>
-                        <td>${contact.firstName}</td>
-                        <td>${contact.lastName}</td>
-                        <td>${contact.email}</td>
-                        <td>${contact.address}</td>
-                        <td>${contact.zipCode}</td>
-                        <td>${contact.city}</td>
-                        <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
-                        <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/delete">Delete</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
+            <h3>Sign-Up</h3>
+            <form action="register" th:action="@{/users}" th:object="${user}" method="post">
+                <p>Firstname: <input type="text" th:field="*{firstname}"/></p>
+                <p>Lastname: <input type="text" th:field="*{lastname}"/></p>
+                <p>Username: <input type="text" th:field="*{username}"/></p>
+                <p>Email: <input type="text" th:field="*{email}"/></p>
+                <p>Role:
+                    <select name="Role">
+                        <th:forEach var="role" items="${roleList}">
+                            <option value="${role}">${role}</option>
+                        </th:forEach>
+                    </select>
+                </p>
+                <p>Password: <input type="text" th:field="*{password}"/></p>
+                <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
+            </form>
+
+            <a href="index" class="btn btn-primary">Home</a>
         </div>
     </div>
 </div>

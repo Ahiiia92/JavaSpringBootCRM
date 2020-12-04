@@ -1,43 +1,80 @@
-//package com.example.demo.controller;
-//
-//import Contact;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.servlet.ModelAndView;
-//import ContactService;
-//
-//@Controller
-//@RequestMapping(value = {"/contacts"})
-//public class ContactController {
-//    private final ContactService contactService;
-//
-//    @Autowired
-//    public ContactController(ContactService contactService) {
-//        this.contactService = contactService;
-//    }
-//
+package com.realestate.controller;
+
+import com.realestate.model.Contact;
+import com.realestate.repository.ContactDAO;
+import com.realestate.services.ContactService;
+import com.realestate.services.ContactServiceImplementation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+
+
+@Controller
+@RequestMapping(value = {"admin/dashboard/contacts"})
+public class ContactController {
+    private final ContactService contactService;
+    ContactDAO contactRepository;
+
+    @Autowired
+    public ContactController(ContactService contactService) {
+        this.contactService = contactService;
+    }
+
 //    @RequestMapping(value = "/new", method = RequestMethod.POST)
 //    public String addPageContact(@ModelAttribute Contact contact, Model model) {
 //        contactService.createContact(contact);
 //        model.addAttribute("contacts", contactService.getAllContact());
 //        return "dashboard";
 //    }
+
+    // NEW
+    @GetMapping("/new")
+    public String showNewContactPage(Model model) {
+        Contact contact = new Contact();
+        model.addAttribute("contact", contact);
+        return "new_contact";
+    }
+    // CREATE
+    @PostMapping(value = "/save")
+    public String saveContact(@ModelAttribute("contact") Contact contact) {
+        System.out.println(contact);
+        contactService.createContact(contact);
+        return "contacts";
+    }
+    // INDEX
+    @GetMapping("")
+    public String allContacts(Model model) {
+        List<Contact> contactList = contactService.getAllContacts();
+        model.addAttribute("contacts", contactList);
+
+        return "contacts";
+    }
 //
-////    @GetMapping("/contacts")
-////    public List<Contact> getAllContact() {
-////        return contactService.getAllContact();
-////    }
-//
+//    // SHOW
+//    // EDIT
+    @RequestMapping("/edit/{id}")
+    public ModelAndView showEditProductPage(@PathVariable(name = "id") long id) {
+        ModelAndView mav = new ModelAndView("edit_contact");
+        Contact contact = contactService.getContactById(id);
+        mav.addObject("contact", contact);
+
+        return mav;
+    }
+    // UPDATE
 //    @GetMapping(value = {""})
 //    public ModelAndView getContact() {
 //        ModelAndView modelAndView = new ModelAndView();
 //        modelAndView.setViewName("contacts");
 //        return modelAndView;
 //    }
-//}
+    // DELETE
+    @RequestMapping("/delete/{id}")
+    public String deleteContact(@PathVariable(name = "id") long id) {
+        contactService.deleteContact(id);
+        return "redirect:/admin/dashboard";
+    }
+}

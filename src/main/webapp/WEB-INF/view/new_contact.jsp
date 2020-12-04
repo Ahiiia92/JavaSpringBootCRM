@@ -1,7 +1,10 @@
-<!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Login</title>
+    <meta charset="ISO-8859-1">
+    <title>Add Contact</title>
     <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <script src="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
@@ -22,12 +25,10 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="dashboard">Dashboard
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" href="admin/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="list_contacts">List of Contact</a>
+                    <a class="nav-link" href="admin/dashboard/contacts">List of Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
@@ -39,13 +40,20 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col">
-<h1>Login</h1>
-<form action="#" th:action="@{/success}" th:object="${user}" method="post">
-    <p>Username: <input type="text" th:field="*{username}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
-    <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary" /></p>
-</form>
-<a href="/" class="btn btn-primary">Home</a>
+        <h3>Add new Contact</h3>
+
+        <form action="#" th:action="save" th:object="${contact}" method="post">
+            <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
+            <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
+            <p>Address: <input type="text" th:field="*{address}"/></p>
+            <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
+            <p>City: <input type="text" th:field="*{city}"/></p>
+            <p>Email: <input type="text" th:field="*{email}"/></p>
+            <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
+        </form>
+
+        <a href="admin/dashboard" class="btn btn-primary">Dashboard</a>
+        <a href="/" class="btn btn-primary"">Home</a>
         </div>
     </div>
 </div>

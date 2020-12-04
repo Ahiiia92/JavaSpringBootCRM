@@ -1,12 +1,10 @@
 package com.realestate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "Contacts_CRM")
+@Table(name = "CRM_Contacts")
 public class Contact {
     @Id
     @GeneratedValue
@@ -18,6 +16,10 @@ public class Contact {
     private String zipCode;
     private String city;
     private String email;
+//    @OneToMany(cascade=CascadeType.ALL)
+//    @JoinColumn(name = "contact_id")
+//    private List<User> users;
+
 
     public Contact() { super(); }
 
@@ -87,6 +89,14 @@ public class Contact {
     public void setEmail(String email) {
         this.email = email;
     }
+
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
     @Override
     public String toString() {

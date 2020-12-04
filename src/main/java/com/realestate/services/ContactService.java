@@ -10,10 +10,11 @@ import java.util.List;
 
 @Service("contactService")
 public interface ContactService {
-    List<Contact> getAllContact();
+    List<Contact> getAllContacts();
     Contact getContactById(long contactId);
 
     Contact createContact(long id, Contact contact);
+
     // Create a contact also without ID:
     default Contact createContact(Contact contact) {
         long id = (long)(Math.random());

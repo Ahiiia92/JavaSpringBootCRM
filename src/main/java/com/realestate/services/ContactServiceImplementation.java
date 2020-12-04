@@ -4,7 +4,6 @@ import com.realestate.model.Contact;
 import com.realestate.repository.ContactDAO;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,21 +15,15 @@ public class ContactServiceImplementation implements ContactService {
     @Autowired
     private ContactDAO contactRepository;
 
-    @Bean
-    public ContactDAO getContactRepository() {
-        return contactRepository;
-    }
-
     @Override
-    public List<Contact> getAllContact() {
-//        return contactRepository.findAll();
-        List<Contact> listContact = new ArrayList<>();
-
-        listContact.add(new Contact("Marry", "John", "marry.john@gmail.com", "rue de l'aglieser", "56531", "berlin"));
-        listContact.add(new Contact("jean", "John", "marry.drfg@gmail.com", "dsrfhjkjhr", "56531", "berlin"));
-        listContact.add(new Contact("John", "John", "dsgbjg.john@gmail.com", "dfghjdfg", "56531", "paris"));
-
-        return listContact;
+    public List<Contact> getAllContacts() {
+        return contactRepository.findAll();
+        // HARD GECODET DATA
+//        List<Contact> listContact = new ArrayList<>();
+//        listContact.add(new Contact("Marry", "John", "marry.john@gmail.com", "rue de l'aglieser", "56531", "berlin"));
+//        listContact.add(new Contact("jean", "John", "marry.drfg@gmail.com", "dsrfhjkjhr", "56531", "berlin"));
+//        listContact.add(new Contact("John", "John", "dsgbjg.john@gmail.com", "dfghjdfg", "56531", "paris"));
+//        return listContact;
     }
 
     @Override
@@ -45,7 +38,19 @@ public class ContactServiceImplementation implements ContactService {
 
     @Override
     public Contact createContact(Contact contact) {
-        return contactRepository.save(contact);
+        List<Contact> contactList = new ArrayList<>();
+        Contact contact1 = new Contact("Marry", "John", "marry.john@gmail.com", "rue de l'aglieser", "56531", "berlin");
+        Contact contact2 = new Contact("jean", "John", "marry.drfg@gmail.com", "dsrfhjkjhr", "56531", "berlin");
+
+        contactList.add(contact1);
+        contactList.add(contact2);
+
+        contactRepository.save(contact1);
+        contactRepository.save(contact2);
+        System.out.println(contactRepository.save(contact1));
+        System.out.println(contactRepository.save(contact2));
+        System.out.println(contactList);
+        return (Contact) contactList;
     }
 
     @Override

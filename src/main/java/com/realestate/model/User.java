@@ -1,24 +1,57 @@
 package com.realestate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "Sales_users")
+@Table(name = "Users")
 public class User {
     @Id
     @GeneratedValue
     long Id;
+    private String firstname;
+    private String lastname;
     private String username;
+    private String email;
     private String password;
+    private String role;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private List<Contact> contacts;
 
     public User() { super(); }
 
-    public User(String username, String password) {
+    public User(String firstname, String lastname, String username, String email, String password, String role) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.username = username;
+        this.email = email;
         this.password = password;
+        this.role = role;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public long getId() {
@@ -43,6 +76,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

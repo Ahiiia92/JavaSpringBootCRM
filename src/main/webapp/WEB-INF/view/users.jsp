@@ -1,7 +1,11 @@
-<!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Login</title>
+    <meta charset="ISO-8859-1">
+    <title>Hello ${name}!</title>
     <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <script src="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
@@ -19,15 +23,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="dashboard">Dashboard
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="list_contacts">List of Contact</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard/contacts">List of Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
@@ -39,13 +41,27 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col">
-<h1>Login</h1>
-<form action="#" th:action="@{/success}" th:object="${user}" method="post">
-    <p>Username: <input type="text" th:field="*{username}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
-    <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary" /></p>
-</form>
-<a href="/" class="btn btn-primary">Home</a>
+<div class="col-6 mb-4">
+    <h3 class="mb-3">User list</h3>
+    <table border="1" cellpadding="10">
+            <th>ID</th><th>Firstname</th><th>Lastname</th><th>Email</th><th>Username</th><th>Role</th>
+        </tr>
+        <c:forEach var="user" items="${users}">
+            <tr>
+
+                    <td>${user.id}</td>
+                    <td>${user.firstname}</td>
+                    <td>${user.lastname}</td>
+                    <td>${user.email}</td>
+                    <td>${user.username}</td>
+                    <td>${user.role}</td>
+                    <td><a href="users/${user.id}">Show</a></td>
+                <td><a href="${pageContext.request.contextPath}/users/${user.id}/edit">Edit</a></td>
+                <td><a href="${pageContext.request.contextPath}/users/${user.id}/delete">Delete</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
         </div>
     </div>
 </div>

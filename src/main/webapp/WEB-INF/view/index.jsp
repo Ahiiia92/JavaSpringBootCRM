@@ -6,14 +6,14 @@
     <meta charset="ISO-8859-1">
     <title>Hello ${name}!</title>
     <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
-    <link href="webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
-    <script src="webjars/jquery/3.0.0/jquery.min.js" ></script>
+    <link href="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="${pageContext.request.contextPath}/webjars/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+    <script src="${pageContext.request.contextPath}/webjars/jquery/3.0.0/jquery.min.js" ></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">HomePage - CRM Estate - Website Here</a>
+        <a class="navbar-brand" href="/">CRM Estate</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -27,13 +27,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard">Dashboard</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="list_contacts">List of Contact</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard/contacts">List of Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login">Login</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
                 </li>
             </ul>
         </div>
@@ -42,15 +42,12 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col">
-            <h3>Welcome to Spring Boot MVC! I'm a .jsp file</h3>
+            <h3>Website HERE</h3>
 
-            <button type="button" class="btn btn-primary" href="#">
-                New Contact
-            </button>
+            <br>
 
-            <button type="button" class="btn btn-primary" href="#">
-                New User
-            </button>
+            <a class="btn btn-primary" href="admin/dashboard/contacts/new">New Contact</a>
+            <a class="btn btn-primary" href="login/new">New User</a>
 
         </div>
     </div>

@@ -1,12 +1,20 @@
 package com.realestate.controller;
 
+import com.realestate.model.Contact;
 import com.realestate.model.User;
+import com.realestate.repository.UserDAO;
 import com.realestate.services.UserService;
+import com.realestate.services.UserServiceImplementation;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = {"/login"})
@@ -35,5 +43,55 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
+    }
+
+    // INDEX
+    @GetMapping("users")
+    public String showAllUsers(Model model) {
+        List<User> userList = userService.getAllUsers();
+        model.addAttribute("users", userList);
+        return "users";
+    }
+
+    // NEW
+    @GetMapping("/new")
+    public String showNewUserPage(Model model) {
+        User user = new User();
+        List<String> roleList = Arrays.asList("Sales Repo", "Sales Manager");
+        model.addAttribute("user", user);
+        model.addAttribute("roleList", roleList);
+        return "sign_up";
+    }
+
+    // CREATE USER WITH UI
+    @PostMapping("/register")
+    public String saveNewUser(@ModelAttribute("user") @RequestBody User user) {
+        userService.createNewUser(user);
+        return "success";
+    }
+
+    // EDIT USER WITH UI
+//    @GetMapping("/users/{id}")
+//    public String editUser(@PathVariable Long id, @RequestBody User userDetails) {
+//        User user = userService.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+//        updateUser(id, userDetails);
+//    }
+
+    // UPDATE USER WITH UI
+    @PutMapping("users/{id}")
+    public String updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+        User user = userService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+        user.setFirstname(userDetails.getFirstname());
+        user.setLastname(userDetails.getLastname());
+        user.setEmail(userDetails.getEmail());
+        user.setPassword(userDetails.getPassword());
+        user.setRole(userDetails.getRole());
+        user.setUsername(userDetails.getUsername());
+
+        User updatedUser = userService.save(user);
+        ResponseEntity.ok(updatedUser);
+        return "users";
     }
 }
