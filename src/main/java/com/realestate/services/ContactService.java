@@ -1,6 +1,7 @@
 package com.realestate.services;
 
 import com.realestate.model.Contact;
+import com.realestate.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public interface ContactService {
 
     Contact updateContact(long id, Contact contact);
     Contact updateContact(Contact contact);
+
+    Contact save(Contact contact);
 
     void deleteContact(long id);
 }

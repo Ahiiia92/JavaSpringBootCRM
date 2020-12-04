@@ -16,9 +16,9 @@ public class Contact {
     private String zipCode;
     private String city;
     private String email;
-//    @OneToMany(cascade=CascadeType.ALL)
-//    @JoinColumn(name = "contact_id")
-//    private List<User> users;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name = "contact_id")
+    private List<User> users;
 
 
     public Contact() { super(); }

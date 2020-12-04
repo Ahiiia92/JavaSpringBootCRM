@@ -37,25 +37,11 @@ public class ContactServiceImplementation implements ContactService {
     }
 
     @Override
-    public Contact createContact(Contact contact) {
-        List<Contact> contactList = new ArrayList<>();
-        Contact contact1 = new Contact("Marry", "John", "marry.john@gmail.com", "rue de l'aglieser", "56531", "berlin");
-        Contact contact2 = new Contact("jean", "John", "marry.drfg@gmail.com", "dsrfhjkjhr", "56531", "berlin");
-
-        contactList.add(contact1);
-        contactList.add(contact2);
-
-        contactRepository.save(contact1);
-        contactRepository.save(contact2);
-        System.out.println(contactRepository.save(contact1));
-        System.out.println(contactRepository.save(contact2));
-        System.out.println(contactList);
-        return (Contact) contactList;
-    }
+    public Contact createContact(Contact contact) { return contactRepository.save(contact); }
 
     @Override
     public Contact updateContact(long id, Contact contact) {
-        Optional<Contact> contactDb = contactRepository.findById(contact.getId());
+        Optional<Contact> contactDb = contactRepository.findById(id);
 
         if(contactDb.isPresent()) {
             Contact contactToUpdate = contactDb.get();
@@ -75,7 +61,27 @@ public class ContactServiceImplementation implements ContactService {
 
     @Override
     public Contact updateContact(Contact contact) {
-        return null;
+        Optional<Contact> contactDb = contactRepository.findById(contact.getId());
+
+        if(contactDb.isPresent()) {
+            Contact contactToUpdate = contactDb.get();
+            contactToUpdate.setId(contact.getId());
+            contactToUpdate.setFirstName(contact.getFirstName());
+            contactToUpdate.setLastName(contact.getLastName());
+            contactToUpdate.setAddress(contact.getAddress());
+            contactToUpdate.setZipCode(contact.getZipCode());
+            contactToUpdate.setCity(contact.getCity());
+            contactToUpdate.setEmail(contact.getEmail());
+            contactRepository.save(contactToUpdate);
+            return contactToUpdate;
+        } else {
+            throw new ResourceNotFoundException("Record not found with id : " + contact.getId());
+        }
+    }
+
+    @Override
+    public Contact save(Contact contact) {
+        return contactRepository.save(contact);
     }
 
     @Override

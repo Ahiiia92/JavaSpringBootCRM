@@ -24,7 +24,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    // create employee rest api
+    // create user rest api
     @PostMapping("/users")
     public User createUser(@RequestBody User user) {
         return userService.createNewUser(user);
@@ -34,7 +34,7 @@ public class UserController {
     @GetMapping("/users/{id}")
     public ResponseEntity< User > getUserById(@PathVariable Long id) {
         User user = userService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id :" + id));
         return ResponseEntity.ok(user);
     }
 
@@ -42,9 +42,9 @@ public class UserController {
     @PutMapping("/users/{id}")
     public ResponseEntity < User > updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User user = userService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id :" + id));
 
-        // If I put the update method in the UserServiceImplementation File
+        // If I put the update method in the UserServiceImplementation File. To Test
 //        User updatedUser = userService.updateUser(id, userDetails);
 
         user.setFirstname(userDetails.getFirstname());
@@ -62,7 +62,7 @@ public class UserController {
     @DeleteMapping("/users/{id}")
     public ResponseEntity < Map < String, Boolean >> deleteEmployee(@PathVariable Long id) {
         User user = userService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id :" + id));
 
         userService.delete(user);
         Map< String, Boolean > response = new HashMap< >();

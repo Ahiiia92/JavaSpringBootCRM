@@ -1,7 +1,9 @@
 package com.realestate.services;
 
+import com.realestate.model.Contact;
 import com.realestate.model.User;
 import com.realestate.repository.UserDAO;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,18 +51,22 @@ public class UserServiceImplementation implements UserService {
         userRepository.delete(user);
     }
 
-//    @Override
-//    public User updateUser(long id, User userDetails) {
-//        User user = userRepository.findById(id);
+//    public User updateUser(long id, User user) {
+//        Optional<User> userDb = userRepository.findById(id);
 //
-//        user.setFirstname(userDetails.getFirstname());
-//        user.setLastname(userDetails.getLastname());
-//        user.setEmail(userDetails.getEmail());
-//        user.setPassword(userDetails.getPassword());
-//        user.setRole(userDetails.getRole());
-//        user.setUsername(userDetails.getUsername());
-//
-//        return userRepository.save(user);
+//        if(userDb.isPresent()) {
+//            User userToUpdate = userDb.get();
+//            userToUpdate.setId(user.getId());
+//            userToUpdate.setFirstname(user.getFirstname());
+//            userToUpdate.setLastname(user.getLastname());
+//            userToUpdate.setUsername(user.getUsername());
+//            userToUpdate.setPassword(user.getPassword());
+//            userToUpdate.setRole(user.getRole());
+//            userToUpdate.setEmail(user.getEmail());
+//            userRepository.save(userToUpdate);
+//            return userToUpdate;
+//        } else {
+//            throw new ResourceNotFoundException("Record not found with id : " + user.getId());
+//        }
 //    }
-
 }

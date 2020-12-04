@@ -1,5 +1,6 @@
 package com.realestate.controller;
 
+import com.realestate.exception.ResourceNotFoundException;
 import com.realestate.model.Contact;
 import com.realestate.repository.ContactDAO;
 import com.realestate.services.ContactService;
@@ -40,10 +41,9 @@ public class ContactController {
     }
     // CREATE
     @PostMapping(value = "/save")
-    public String saveContact(@ModelAttribute("contact") Contact contact) {
-        System.out.println(contact);
+    public String saveContact(@RequestBody Contact contact) {
         contactService.createContact(contact);
-        return "contacts";
+        return "redirect:/contacts";
     }
     // INDEX
     @GetMapping("")
@@ -55,10 +55,18 @@ public class ContactController {
     }
 //
 //    // SHOW
+    @GetMapping("/{id}")
+    public ModelAndView getContactById(@PathVariable long id) {
+        ModelAndView mavShow = new ModelAndView("{id}");
+        Contact contact = contactService.getContactById(id);
+        mavShow.addObject("contact", contact);
+
+        return mavShow;
+    }
 //    // EDIT
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditProductPage(@PathVariable(name = "id") long id) {
-        ModelAndView mav = new ModelAndView("edit_contact");
+        ModelAndView mav = new ModelAndView("edit_form");
         Contact contact = contactService.getContactById(id);
         mav.addObject("contact", contact);
 

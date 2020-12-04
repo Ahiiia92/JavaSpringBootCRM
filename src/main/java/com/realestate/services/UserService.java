@@ -14,7 +14,7 @@ public interface UserService {
 
     Optional<User> findById(Long id);
 
-//    User updateUser(long id, User user);
+//    User updateUser(long id, User userDetails);
 
     User save(User user);
 

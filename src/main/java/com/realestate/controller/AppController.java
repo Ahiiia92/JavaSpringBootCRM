@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.realestate.services.ContactServiceImplementation;
 
 import java.util.List;
 
@@ -33,30 +32,7 @@ public class AppController {
     }
 
     @GetMapping({"/", "index"})
-    public String index(Model model, @RequestParam(value = "name", required = false, defaultValue = "Marou") String name) {
-        model.addAttribute("name", name);
-        Contact c1 = new Contact();
-        c1.setFirstName("Marie");
-        c1.setLastName("Hess");
-        c1.setAddress("lallaal");
-        c1.setZipCode("13453");
-        c1.setCity("München");
-        c1.setEmail("marie@hess.de");
+    public String index(Model model) {
         return "index";
     }
-
-    @GetMapping("/new")
-    public String newContact(Model model, @RequestParam(value = "firstName", required = true, defaultValue = "NoFirstname") String firstName) {
-        model.addAttribute("firstName", firstName);
-        return "new";
-    }
-
-    @RequestMapping("/list_contacts")
-    public String listContacts(Model model) {
-        List<Contact> contactList = contactService.getAllContacts();
-        model.addAttribute("contacts", contactList);
-
-        return "list_contacts";
-    }
-
 }
