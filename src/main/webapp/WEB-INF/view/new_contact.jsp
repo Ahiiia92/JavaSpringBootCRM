@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">HomePage - CRM Estate - Website Here</a>
+        <a class="navbar-brand" href="/">CRM Estate</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -40,20 +40,22 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col">
-        <h3>Add new Contact</h3>
+            <div class="col-6 mb-4">
+            <h3>Add new Contact</h3>
 
-        <form action="#" th:action="save" th:object="${contact}" method="post">
-            <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
-            <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
-            <p>Address: <input type="text" th:field="*{address}"/></p>
-            <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
-            <p>City: <input type="text" th:field="*{city}"/></p>
-            <p>Email: <input type="text" th:field="*{email}"/></p>
-            <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
-        </form>
+            <form action="#" th:action="save" th:object="${contact}" method="post">
+                <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
+                <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
+                <p>Address: <input type="text" th:field="*{address}"/></p>
+                <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
+                <p>City: <input type="text" th:field="*{city}"/></p>
+                <p>Email: <input type="text" th:field="*{email}"/></p>
+                <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
+            </form>
 
-        <a href="admin/dashboard" class="btn btn-primary">Dashboard</a>
-        <a href="/" class="btn btn-primary"">Home</a>
+            <a href="/admin/dashboard" class="btn btn-primary">Dashboard</a>
+            <a href="/" class="btn btn-primary"">Home</a>
+            </div>
         </div>
     </div>
 </div>

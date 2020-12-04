@@ -61,6 +61,7 @@
                             <td>${contact.zipCode}</td>
                             <td>${contact.city}</td>
                             <td>${contact.user_id}</td>
+                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/delete">Delete</a></td>
                         </tr>
@@ -82,6 +83,7 @@
                             <td>${user.email}</td>
                             <td>${user.username}</td>
                             <td>${user.role}</td>
+                            <td><a href="${pageContext.request.contextPath}/users/${user.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/users/${user.id}/edit">Edit</a></td>
                             <td><a href="${pageContext.request.contextPath}/users/${user.id}/delete">Delete</a></td>
                         </tr>
@@ -89,23 +91,8 @@
                 </table>
             </div>
 
-            <c:forEach var="contact" items="${contacts}">
-                <tr>
-                    <td>${contact.id}</td>
-                    <td>${contact.firstName}</td>
-                    <td>${contact.lastName}</td>
-                    <td>${contact.email}</td>
-                    <td>${contact.address}</td>
-                    <td>${contact.zipCode}</td>
-                    <td>${contact.city}</td>
-                    <td><a th:href="/@{'/edit/' + ${contact.id}}">Edit</a></td>
-                    <td><a th:href="/@{'/delete/' + ${contact.id}}">Delete</a></td>
-                </tr>
-            </c:forEach>
             <br>
-            <br>
-            <a href="index" class="btn btn-primary">Home</a>
-            <a href="new" class="btn btn-primary">New Contact</a>
+            <a href="dashboard/contacts/new" class="btn btn-primary">New Contact</a>
         </div>
     </div>
 </div>

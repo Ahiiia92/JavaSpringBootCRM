@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="list_contacts">List of Contact</a>
+                    <a class="nav-link" href="admin/dashboard/contacts">List of Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
@@ -39,13 +39,14 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col">
-<h1>Login</h1>
-<form action="#" th:action="@{/success}" th:object="${user}" method="post">
-    <p>Username: <input type="text" th:field="*{username}" /></p>
-    <p>Password: <input type="text" th:field="*{password}" /></p>
-    <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary" /></p>
-</form>
-<a href="/" class="btn btn-primary">Home</a>
+            <div class="col-6 mb-4">
+                <h1>Login</h1>
+                <form action="#" th:action="@{/success}" th:object="${user}" method="post">
+                    <p>Username: <input type="text" th:field="*{username}" /></p>
+                    <p>Password: <input type="text" th:field="*{password}" /></p>
+                    <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary" /></p>
+                </form>
+            </div>
         </div>
     </div>
 </div>

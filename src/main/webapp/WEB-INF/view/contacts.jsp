@@ -43,11 +43,9 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col">
+            <div class="col-6 mb-4">
             <h3>Contact list</h3>
             ${contacts}
-            <br>
-            <br>
-            <a class="btn btn-primary" href="/new">New Contact</a>
             <br>
             <br>
             <table border="1" cellpadding="10">
@@ -63,11 +61,15 @@
                         <td>${contact.address}</td>
                         <td>${contact.zipCode}</td>
                         <td>${contact.city}</td>
+                        <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/show">Show</a></td>
                         <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
                         <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/delete">Delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
+            <br>
+            <a class="btn btn-primary" href="admin/dashboard/contacts/new">New Contact</a>
+            </div>
         </div>
     </div>
 </div>
