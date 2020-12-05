@@ -1,10 +1,10 @@
 package com.realestate.services;
 
 import com.realestate.model.Contact;
-import com.realestate.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 // The service layer is optional – still recommended to perform additional business logic if any.
 // Generally, we will connect with repository here for crud operations.
@@ -28,4 +28,6 @@ public interface ContactService {
     Contact save(Contact contact);
 
     void deleteContact(long id);
+
+    Optional<Contact> findById(Long id);
 }

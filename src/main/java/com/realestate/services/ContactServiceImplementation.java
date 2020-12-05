@@ -6,7 +6,6 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,4 +93,7 @@ public class ContactServiceImplementation implements ContactService {
             throw new ResourceNotFoundException("Record not found with id : " + id);
         }
     }
+
+    @Override
+    public Optional<Contact> findById(Long id) { return contactRepository.findById(id); }
 }
