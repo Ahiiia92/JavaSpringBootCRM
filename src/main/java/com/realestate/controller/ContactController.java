@@ -66,16 +66,7 @@ public class ContactController {
 
         return "contacts";
     }
-//
-//    // SHOW
-//    @GetMapping("admin/dashboard/contacts/{id}/show")
-//    public ModelAndView getContactById(@PathVariable long id) {
-//        ModelAndView mavShow = new ModelAndView("show");
-//        Contact contact = contactService.getContactById(id);
-//        mavShow.addObject("contact", contact);
-//
-//        return mavShow;
-//    }
+
     @GetMapping("/{id}/show")
     public String showContact(Model model, @PathVariable Long id) {
         Contact contact = contactService.findById(id)
@@ -84,8 +75,24 @@ public class ContactController {
         model.addAttribute("contact", contact);
         return "show";
     }
-//    // EDIT
-//    @RequestMapping("/{id}/edit")
+    // TODO: EDIT
+    @PutMapping("/{id}/show")
+    public String updateContact(Model model, @PathVariable Long id, @RequestBody Contact contactDetails) {
+        Contact contact = contactService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Contact doesn't exist with id: " + id));
+        contact.setFirstName(contactDetails.getFirstName());
+        contact.setLastName(contactDetails.getLastName());
+        contact.setAddress(contactDetails.getAddress());
+        contact.setZipCode(contactDetails.getZipCode());
+        contact.setCity(contactDetails.getCity());
+        contact.setEmail(contactDetails.getEmail());
+        contact.setUsers(contactDetails.getUsers());
+
+        Contact updatedContact = contactService.save(contact);
+        ResponseEntity.ok(updatedContact);
+        model.addAttribute("contact", contact);
+        return "dashboard";
+    }
 //    public ModelAndView showEditProductPage(@PathVariable(name = "id") long id) {
 //        ModelAndView mav = new ModelAndView("edit_form");
 //        Contact contact = contactService.getContactById(id);
@@ -113,7 +120,7 @@ public class ContactController {
         return ResponseEntity.ok(updatedContact);
     }
 
-    // DELETE
+    // TODO: DELETE
     @RequestMapping("/{id}/delete")
     public String deleteContact(@PathVariable(name = "id") long id) {
         contactService.deleteContact(id);

@@ -14,46 +14,20 @@
     <script src="${pageContext.request.contextPath}/webjars/jquery/3.0.0/jquery.min.js" ></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/">CRM Estate</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/dashboard/contacts">List of Contact<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<%@include file="_navbar.jsp"%>
 <div class="container-fluid">
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="sidebar-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard">
+                        <a class="nav-link" href="dashboard">
                             <span data-feather="home"></span>
-                            Dashboard<span class="sr-only">(current)</span>
+                            Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard/contacts">
+                        <a class="nav-link active" href="#">
                             <span data-feather="file"></span>
                             Contacts
                         </a>
@@ -161,7 +135,7 @@
                             <td>${contact.city}</td>
                             <td>TO DO</td>
                                 <%--                            <td>${contact.user_id}</td>--%>
-                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/show">Show</a></td>
+                            <td><a href="${pageContext.request.contextPath}/admin/dashboard/contacts/${contact.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/delete">Delete</a></td>
                         </tr>
@@ -169,7 +143,7 @@
                     </tbody>
                 </table>
             </div>
-            <a class="btn btn-primary" href="admin/dashboard/contacts/new">New Contact</a>
+            <a class="btn btn-primary" href="contacts/new">New Contact</a>
             <br>
         </main>
     </div>

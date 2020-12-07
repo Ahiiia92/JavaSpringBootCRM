@@ -76,9 +76,9 @@ public class LoginController {
 //        updateUser(id, userDetails);
 //    }
 
-    // UPDATE USER WITH UI
-    @PutMapping("users/{id}")
-    public String updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+    // TODO: UPDATE USER WITH UI
+    @PutMapping("users/{id}/show")
+    public String updateUser(Model model, @PathVariable Long id, @RequestBody User userDetails) {
         User user = userService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
         user.setFirstname(userDetails.getFirstname());
@@ -90,7 +90,8 @@ public class LoginController {
 
         User updatedUser = userService.save(user);
         ResponseEntity.ok(updatedUser);
-        return "users";
+        model.addAttribute("user", user);
+        return "show";
     }
 
     @GetMapping("users/{id}/show")
