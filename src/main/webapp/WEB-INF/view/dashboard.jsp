@@ -184,7 +184,7 @@
                             <td>${user.email}</td>
                             <td>${user.username}</td>
                             <td>${user.role}</td>
-                            <td><a href="login/users/${user.id}/show">Show</a></td>
+                            <td><a href="/login/users/${user.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/users/${user.id}/edit">Edit</a></td>
                             <td><a href="${pageContext.request.contextPath}/users/${user.id}/delete">Delete</a></td>
                         </tr>

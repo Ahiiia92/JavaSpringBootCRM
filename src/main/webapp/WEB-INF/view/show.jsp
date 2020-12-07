@@ -34,6 +34,7 @@
         <div class="col">
             <div align="center">
 <%--                <c:if test="${contact == null}"> Null</c:if>--%>
+                ${contact}
                 <c:if test="${contact != null}">
                     <h1>Show Contact: ${contacts.firstName} - ${contacts.lastName}</h1>
                     <br />
@@ -48,7 +49,6 @@
 
             </div>
             <div align="center">
-                                <c:if test="${user == null}"> Null</c:if>
                 <c:if test="${user != null}">
                     <h1>Show User: ${user.username} - ${user.lastname}</h1>
                     <br />

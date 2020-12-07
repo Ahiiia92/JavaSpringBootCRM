@@ -1,11 +1,9 @@
 package com.realestate.controller;
 
-import com.realestate.model.Contact;
+import com.realestate.exception.ResourceNotFoundException;
 import com.realestate.model.User;
-import com.realestate.repository.UserDAO;
 import com.realestate.services.UserService;
-import com.realestate.services.UserServiceImplementation;
-import org.apache.velocity.exception.ResourceNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

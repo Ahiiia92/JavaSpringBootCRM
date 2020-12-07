@@ -68,13 +68,21 @@ public class ContactController {
     }
 //
 //    // SHOW
-    @GetMapping("admin/dashboard/contacts/{id}/show")
-    public ModelAndView getContactById(@PathVariable long id) {
-        ModelAndView mavShow = new ModelAndView("show");
-        Contact contact = contactService.getContactById(id);
-        mavShow.addObject("contact", contact);
-
-        return mavShow;
+//    @GetMapping("admin/dashboard/contacts/{id}/show")
+//    public ModelAndView getContactById(@PathVariable long id) {
+//        ModelAndView mavShow = new ModelAndView("show");
+//        Contact contact = contactService.getContactById(id);
+//        mavShow.addObject("contact", contact);
+//
+//        return mavShow;
+//    }
+    @GetMapping("/{id}/show")
+    public String showContact(Model model, @PathVariable Long id) {
+        Contact contact = contactService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(("Contact does not exist with id: " + id)));
+        ResponseEntity.ok(contact);
+        model.addAttribute("contact", contact);
+        return "show";
     }
 //    // EDIT
 //    @RequestMapping("/{id}/edit")

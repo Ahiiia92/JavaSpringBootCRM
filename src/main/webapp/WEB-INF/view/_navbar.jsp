@@ -12,12 +12,12 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="dashboard">Dashboard
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard/contacts">List of Contact</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard/contacts">List of Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
