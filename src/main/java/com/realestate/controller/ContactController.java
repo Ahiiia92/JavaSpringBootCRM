@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +30,7 @@ public class ContactController {
 //    @RequestMapping(value = "/new", method = RequestMethod.POST)
 //    public String addPageContact(@ModelAttribute Contact contact, Model model) {
 //        contactService.createContact(contact);
-//        model.addAttribute("contacts", contactService.getAllContact());
+//        model.addAttribute("contacts", contactService.getAllContacts());
 //        return "dashboard";
 //    }
 
@@ -46,6 +47,16 @@ public class ContactController {
         contactService.createContact(contact);
         return "redirect:/contacts";
     }
+
+    // NEW & CREATE
+//    @PostMapping("/new")
+//    public String saveContact(ModelMap model, @ModelAttribute Contact contact) {
+////        Contact createdContact = new Contact();
+//        contactService.createContact(contact);
+//        model.addAttribute("contacts", contactService.getAllContacts());
+//        return "dashboard";
+//    }
+
     // INDEX
     @GetMapping("")
     public String allContacts(Model model) {

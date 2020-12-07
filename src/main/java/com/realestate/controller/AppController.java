@@ -32,7 +32,7 @@ public class AppController {
     }
 
     @GetMapping({"/", "index"})
-    public String index(Model model) {
+    public String index() {
         return "index";
     }
 }

@@ -26,34 +26,8 @@
     <script src="${pageContext.request.contextPath}/webjars/jquery/3.0.0/jquery.min.js" ></script>
 </head>
 <body>
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <div class="container">
-        <a class="navbar-brand" href="/">HomePage - CRM Estate - Website Here</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="admin/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="admin/dashboard/contacts">List of Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<%@include file="_navbar.jsp"%>
+
 <div class="container">
     <div class="row mt-5">
         <div class="col">
@@ -67,6 +41,17 @@
                 <td>${contact.address}</td>
                 <td>${contact.zipCode}</td>
                 <td>${contact.city}</td>
+            </div>
+            <div align="center">
+                <h1>Show User: ${user.firstName} - ${user.lastName}</h1>
+                <br />
+                <td>${user.id}</td>
+                <td>${user.firstname}</td>
+                <td>${user.lastname}</td>
+                <td>${user.password}</td>
+                <td>${user.role}</td>
+                <td>${user.username}</td>
+                <td>${user.email}</td>
             </div>
         </div>
     </div>

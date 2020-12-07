@@ -16,34 +16,8 @@
     <script src="${pageContext.request.contextPath}/webjars/jquery/3.0.0/jquery.min.js" ></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/">CRM Estate</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="dashboard">Dashboard
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard/contacts">List of Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
+<%@include file="_navbar.jsp"%>
 
 <div class="container-fluid">
     <div class="row">
@@ -140,6 +114,17 @@
             </div>
 
             <h2>Contact list</h2>
+
+            <form action="#" th:action="/save" th:object="${contact}" method="post">
+                <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
+                <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
+                <p>Address: <input type="text" th:field="*{address}"/></p>
+                <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
+                <p>City: <input type="text" th:field="*{city}"/></p>
+                <p>Email: <input type="text" th:field="*{email}"/></p>
+                <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
+            </form>
+
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -166,7 +151,7 @@
                             <td>${contact.city}</td>
                             <td>TO DO</td>
                                 <%--                            <td>${contact.user_id}</td>--%>
-                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/show">Show</a></td>
+                            <td><a href="dashboard/contacts/${contact.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/delete">Delete</a></td>
                         </tr>
@@ -199,7 +184,7 @@
                             <td>${user.email}</td>
                             <td>${user.username}</td>
                             <td>${user.role}</td>
-                            <td><a href="${pageContext.request.contextPath}/users/${user.id}/show">Show</a></td>
+                            <td><a href="login/users/${user.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/users/${user.id}/edit">Edit</a></td>
                             <td><a href="${pageContext.request.contextPath}/users/${user.id}/delete">Delete</a></td>
                         </tr>
@@ -211,10 +196,10 @@
         </div>
     </div>
 </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        <script src="dashboard.js"></script>
+<%--        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>--%>
+<%--        <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>--%>
+<%--        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>--%>
+<%--        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>--%>
+<%--        <script src="dashboard.js"></script>--%>
 </body>
 </html>

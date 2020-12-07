@@ -43,7 +43,7 @@
             <div class="col-6 mb-4">
             <h3>Add new Contact</h3>
 
-            <form action="#" th:action="save" th:object="${contact}" method="post">
+            <form action="#" th:action="/save" th:object="${contact}" method="post">
                 <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
                 <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
                 <p>Address: <input type="text" th:field="*{address}"/></p>
