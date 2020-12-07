@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
@@ -32,26 +33,33 @@
     <div class="row mt-5">
         <div class="col">
             <div align="center">
-                <h1>Show Contact: ${contact.firstName} - ${contact.lastName}</h1>
-                <br />
-                <td>${contact.id}</td>
-                <td>${contact.firstName}</td>
-                <td>${contact.lastName}</td>
-                <td>${contact.email}</td>
-                <td>${contact.address}</td>
-                <td>${contact.zipCode}</td>
-                <td>${contact.city}</td>
+<%--                <c:if test="${contact == null}"> Null</c:if>--%>
+                <c:if test="${contact != null}">
+                    <h1>Show Contact: ${contacts.firstName} - ${contacts.lastName}</h1>
+                    <br />
+                    <td>${contacts.id}</td>
+                    <td>${contacts.firstName}</td>
+                    <td>${contacts.lastName}</td>
+                    <td>${contacts.email}</td>
+                    <td>${contacts.address}</td>
+                    <td>${contacts.zipCode}</td>
+                    <td>${contacts.city}</td>
+                </c:if>
+
             </div>
             <div align="center">
-                <h1>Show User: ${user.firstName} - ${user.lastName}</h1>
-                <br />
-                <td>${user.id}</td>
-                <td>${user.firstname}</td>
-                <td>${user.lastname}</td>
-                <td>${user.password}</td>
-                <td>${user.role}</td>
-                <td>${user.username}</td>
-                <td>${user.email}</td>
+                                <c:if test="${user == null}"> Null</c:if>
+                <c:if test="${user != null}">
+                    <h1>Show User: ${user.username} - ${user.lastname}</h1>
+                    <br />
+                    <td>${user.id}</td>
+                    <td>${user.firstname}</td>
+                    <td>${user.lastname}</td>
+                    <td>${user.password}</td>
+                    <td>${user.role}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                </c:if>
             </div>
         </div>
     </div>

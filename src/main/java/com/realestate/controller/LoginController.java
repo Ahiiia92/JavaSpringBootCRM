@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,9 +48,8 @@ public class LoginController {
     // INDEX
     @GetMapping("users")
     public String showAllUsers(Model model) {
-        List<User> list = new ArrayList<>();
-        list.add((User) userService.getAllUsers());
-        model.addAttribute("users", list);
+        List<User> userList = userService.getAllUsers();
+        model.addAttribute("users", userList);
         return "users";
     }
 
@@ -97,14 +95,12 @@ public class LoginController {
         return "users";
     }
 
-    // TODO: SHOW
     @GetMapping("users/{id}/show")
     public String showUser(Model model, @PathVariable Long id) {
-        User user = userService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + id));
+        User user = userService.findById(id).orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + id));
         ResponseEntity.ok(user);
-        model.addAttribute("users", user);
-        return "show_user";
+        model.addAttribute("user", user);
+        return "show";
     }
     // TODO: DELETE
 }

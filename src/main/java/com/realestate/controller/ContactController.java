@@ -44,14 +44,15 @@ public class ContactController {
     // CREATE
     @PostMapping(value = "/save")
     public String saveContact(@RequestBody Contact contact) {
+        Contact createdContact = new Contact();
         contactService.createContact(contact);
-        return "redirect:/contacts";
+        return "dashboard";
     }
 
     // NEW & CREATE
-//    @PostMapping("/new")
+//    @PostMapping("/save")
 //    public String saveContact(ModelMap model, @ModelAttribute Contact contact) {
-////        Contact createdContact = new Contact();
+//        Contact createdContact = new Contact();
 //        contactService.createContact(contact);
 //        model.addAttribute("contacts", contactService.getAllContacts());
 //        return "dashboard";

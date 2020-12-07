@@ -1,5 +1,6 @@
 package com.realestate.services;
 
+import com.realestate.model.Contact;
 import com.realestate.model.User;
 import org.springframework.stereotype.Service;
 
