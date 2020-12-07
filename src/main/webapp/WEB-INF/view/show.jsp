@@ -33,18 +33,16 @@
     <div class="row mt-5">
         <div class="col">
             <div align="center">
-<%--                <c:if test="${contact == null}"> Null</c:if>--%>
-                ${contact}
                 <c:if test="${contact != null}">
-                    <h1>Show Contact: ${contacts.firstName} - ${contacts.lastName}</h1>
+                    <h1>Show Contact: ${contact.firstName} - ${contact.lastName}</h1>
                     <br />
-                    <td>${contacts.id}</td>
-                    <td>${contacts.firstName}</td>
-                    <td>${contacts.lastName}</td>
-                    <td>${contacts.email}</td>
-                    <td>${contacts.address}</td>
-                    <td>${contacts.zipCode}</td>
-                    <td>${contacts.city}</td>
+                    <td>${contact.id}</td>
+                    <td>${contact.firstName}</td>
+                    <td>${contact.lastName}</td>
+                    <td>${contact.email}</td>
+                    <td>${contact.address}</td>
+                    <td>${contact.zipCode}</td>
+                    <td>${contact.city}</td>
                 </c:if>
 
             </div>
