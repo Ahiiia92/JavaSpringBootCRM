@@ -27,7 +27,8 @@ public class ContactServiceImplementation implements ContactService {
 
     @Override
     public Contact getContactById(long contactId) {
-        return contactRepository.findById(contactId).get();
+        Optional<Contact> optContact = contactRepository.findById(contactId);
+        return optContact.orElseGet(Contact::new);
     }
 
     @Override
