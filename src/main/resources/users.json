@@ -1,0 +1,62 @@
+[
+  {
+    "firstname": "Binca",
+    "lastname": "Herbst",
+    "username": "Biancacita",
+    "email": "bi@bi.de",
+    "password": null,
+    "role": "Manager",
+    "contacts": [],
+    "id": 1
+  },
+  {
+    "firstname": "Nora",
+    "lastname": "Scheuch",
+    "username": "Noracita",
+    "email": "n@n.de",
+    "password": "strongpassword",
+    "role": "Sales Rep",
+    "contacts": null,
+    "id": 42
+  },
+  {
+    "firstname": "Marie",
+    "lastname": "Hess",
+    "username": "Mariiiiie",
+    "email": "m@a.de",
+    "password": "marie",
+    "role": "sales repo",
+    "contacts": [],
+    "id": 2
+  },
+  {
+    "firstname": "Maroussia",
+    "lastname": "Arnault",
+    "username": "Marou",
+    "email": "m@m.fr",
+    "password": "marou",
+    "role": "manager",
+    "contacts": [],
+    "id": 3
+  },
+  {
+    "firstname": "test2",
+    "lastname": "test23",
+    "username": "tesssst",
+    "email": "ok@ok.de",
+    "password": "dfgfgfgf",
+    "role": "manager",
+    "contacts": [],
+    "id": 4
+  },
+  {
+    "firstname": null,
+    "lastname": null,
+    "username": null,
+    "email": null,
+    "password": null,
+    "role": null,
+    "contacts": [],
+    "id": 41
+  }
+]

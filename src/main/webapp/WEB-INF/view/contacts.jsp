@@ -1,5 +1,6 @@
 <%@ taglib prefix="th" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -95,7 +96,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <h1 class="h2">Contact List</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -108,7 +109,6 @@
                 </div>
             </div>
 
-            <h2>Contact list</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -135,7 +135,7 @@
                             <td>${contact.city}</td>
                             <td>TO DO</td>
                                 <%--                            <td>${contact.user_id}</td>--%>
-                            <td><a href="${pageContext.request.contextPath}/admin/dashboard/contacts/${contact.id}/show">Show</a></td>
+                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/delete">Delete</a></td>
                         </tr>
@@ -143,15 +143,44 @@
                     </tbody>
                 </table>
             </div>
+            <br>
+            <br>
             <a class="btn btn-primary" href="contacts/new">New Contact</a>
             <br>
+            <br>
+            <form:form action="" modelAttribute="contact" method="post">
+                <table>
+                <tr>
+                    <td><form:label path="firstName">First Name</form:label></td>
+                    <td><form:input path="firstName"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="lasttName">Last Name</form:label></td>
+                    <td><form:input path="lastName"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="address">Address</form:label></td>
+                    <td><form:input path="address"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="zipCode">ZipCode</form:label></td>
+                    <td><form:input path="zipCode"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="city">City</form:label></td>
+                    <td><form:input path="city"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="email">Email</form:label></td>
+                    <td><form:input path="email"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+            </form:form>
         </main>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-<script src="dashboard.js"></script>
 </body>
 </html>

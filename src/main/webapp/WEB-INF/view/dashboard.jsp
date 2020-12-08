@@ -115,16 +115,6 @@
 
             <h2>Contact list</h2>
 
-            <form action="#" th:action="/save" th:object="${contact}" method="post">
-                <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
-                <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
-                <p>Address: <input type="text" th:field="*{address}"/></p>
-                <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
-                <p>City: <input type="text" th:field="*{city}"/></p>
-                <p>Email: <input type="text" th:field="*{email}"/></p>
-                <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
-            </form>
-
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>

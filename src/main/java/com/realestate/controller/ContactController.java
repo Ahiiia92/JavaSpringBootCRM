@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,40 +20,11 @@ import java.util.List;
 @Controller
 @RequestMapping(value = {"admin/dashboard/contacts"})
 public class ContactController {
-    private final ContactService contactService;
-    ContactDAO contactRepository;
-
     @Autowired
-    public ContactController(ContactService contactService) {
-        this.contactService = contactService;
-    }
+    private ContactService contactService;
 
 //    @RequestMapping(value = "/new", method = RequestMethod.POST)
 //    public String addPageContact(@ModelAttribute Contact contact, Model model) {
-//        contactService.createContact(contact);
-//        model.addAttribute("contacts", contactService.getAllContacts());
-//        return "dashboard";
-//    }
-
-    // NEW
-    @GetMapping("/new")
-    public String showNewContactPage(Model model) {
-        Contact contact = new Contact();
-        model.addAttribute("contact", contact);
-        return "new_contact";
-    }
-    // CREATE
-    @PostMapping(value = "/save")
-    public String saveContact(@RequestBody Contact contact) {
-        Contact createdContact = new Contact();
-        contactService.createContact(contact);
-        return "dashboard";
-    }
-
-    // NEW & CREATE
-//    @PostMapping("/save")
-//    public String saveContact(ModelMap model, @ModelAttribute Contact contact) {
-//        Contact createdContact = new Contact();
 //        contactService.createContact(contact);
 //        model.addAttribute("contacts", contactService.getAllContacts());
 //        return "dashboard";
@@ -67,6 +39,36 @@ public class ContactController {
         return "contacts";
     }
 
+    // NEW & CREATE
+    @PostMapping("")
+    public String saveContact(@Valid @ModelAttribute("contact") Contact contact,
+                              BindingResult result,
+                              ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        contactService.createContact(contact);
+        model.addAttribute("contacts", contactService.getAllContacts());
+        return "dashboard";
+    }
+
+//    // NEW
+//    @GetMapping("/new")
+//    public String showNewContactPage(Model model) {
+//        Contact contact = new Contact();
+//        model.addAttribute("contact", contact);
+//        return "new_contact";
+//    }
+//    // CREATE
+//    @PostMapping(value = "/save")
+//    public String saveContact(@RequestBody Contact contact) {
+//        Contact createdContact = new Contact();
+//        contactService.createContact(contact);
+//        return "dashboard";
+//    }
+
+
+    // SHOW
     @GetMapping("/{id}/show")
     public String showContact(Model model, @PathVariable Long id) {
         Contact contact = contactService.findById(id)

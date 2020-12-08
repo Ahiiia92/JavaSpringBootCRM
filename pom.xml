@@ -109,6 +109,11 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>ucp</artifactId>
+            <version>19.3.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

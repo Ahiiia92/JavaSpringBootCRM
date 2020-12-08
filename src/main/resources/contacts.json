@@ -1,0 +1,21 @@
+
+[
+  {
+    "firstName": "Nora",
+    "lastName": "S",
+    "email": "bi@bi.de",
+    "address": "schellingerst. 26",
+    "zipCode": "80799",
+    "city": "Muenchen",
+    "users": ""
+  },
+  {
+    "firstName": "Bernard",
+    "lastName": "Mueller",
+    "email": "na@nard.fr",
+    "address": "keineAhnung. 6",
+    "zipCode": "98765",
+    "city": "Stadt",
+    "users": ""
+  }
+]

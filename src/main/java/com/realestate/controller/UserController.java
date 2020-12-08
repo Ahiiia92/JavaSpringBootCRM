@@ -18,18 +18,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // TODO: Test: Works
     // Index
     @GetMapping("users")
     public List<User> getUsers() {
         return userService.getAllUsers();
     }
 
+    // TODO: Test: Works
     // create user rest api
     @PostMapping("/users")
     public User createUser(@RequestBody User user) {
         return userService.createNewUser(user);
     }
 
+    // TODO: Test: Works
     // get user by id rest api
     @GetMapping("/users/{id}")
     public ResponseEntity< User > getUserById(@PathVariable Long id) {
@@ -38,6 +41,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    // TODO: Test: Works
     // update user rest api
     @PutMapping("/users/{id}")
     public ResponseEntity < User > updateUser(@PathVariable Long id, @RequestBody User userDetails) {
@@ -58,6 +62,7 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    // TODO: Test: Works
     // delete user rest api
     @DeleteMapping("/users/{id}")
     public ResponseEntity < Map < String, Boolean >> deleteEmployee(@PathVariable Long id) {
@@ -69,6 +74,4 @@ public class UserController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
-
-
 }
