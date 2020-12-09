@@ -41,7 +41,7 @@ public class ContactController {
 
     // NEW & CREATE
     @PostMapping("")
-    public String saveContact(@Valid @ModelAttribute("contact") Contact contact,
+    public String saveContact(@ModelAttribute("contact") Contact contact,
                               BindingResult result,
                               ModelMap model) {
         if (result.hasErrors()) {

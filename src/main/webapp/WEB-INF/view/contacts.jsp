@@ -148,37 +148,39 @@
             <a class="btn btn-primary" href="contacts/new">New Contact</a>
             <br>
             <br>
-            <form:form action="" modelAttribute="contact" method="post">
-                <table>
-                <tr>
-                    <td><form:label path="firstName">First Name</form:label></td>
-                    <td><form:input path="firstName"/></td>
-                </tr>
-                <tr>
-                    <td><form:label path="lasttName">Last Name</form:label></td>
-                    <td><form:input path="lastName"/></td>
-                </tr>
-                <tr>
-                    <td><form:label path="address">Address</form:label></td>
-                    <td><form:input path="address"/></td>
-                </tr>
-                <tr>
-                    <td><form:label path="zipCode">ZipCode</form:label></td>
-                    <td><form:input path="zipCode"/></td>
-                </tr>
-                <tr>
-                    <td><form:label path="city">City</form:label></td>
-                    <td><form:input path="city"/></td>
-                </tr>
-                <tr>
-                    <td><form:label path="email">Email</form:label></td>
-                    <td><form:input path="email"/></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-            </table>
-            </form:form>
+            <form action="/" method="post">
+                <div>
+                    <label for="firstName">Firstname: </label>
+                    <input type="text" name="firstName"/>
+                </div>
+
+                <div>
+                    <label for="lastName">Lastname: </label>
+                    <input type="text" name="lastName"/>
+                </div>
+
+                <div>
+                    <label for="email">Email: </label>
+                    <input type="text" name="email"/>
+                </div>
+
+                <div>
+                    <label for="address">Address: </label>
+                    <input type="text" name="address"/>
+                </div>
+
+                <div>
+                    <label for="zipCode">ZipCode: </label>
+                    <input type="text" name="zipCode"/>
+                </div>
+
+                <div>
+                    <label for="city">City: </label>
+                    <input type="text" name="city"/>
+                </div>
+
+                <input type="submit" value="Save New Contact" class="btn btn-primary"/>
+            </form>
         </main>
     </div>
 </div>
