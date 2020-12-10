@@ -120,6 +120,7 @@
                         <th>Address</th>
                         <th>ZipCode</th>
                         <th>City</th>
+                        <th>Status</th>
                         <th>Account Manager</th>
                     </tr>
                     </thead>
@@ -133,6 +134,7 @@
                             <td>${contact.address}</td>
                             <td>${contact.zipCode}</td>
                             <td>${contact.city}</td>
+                            <td>${contact.contact_status}</td>
                             <td>TO DO</td>
                                 <%--                            <td>${contact.user_id}</td>--%>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/show">Show</a></td>
@@ -148,39 +150,23 @@
             <a class="btn btn-primary" href="contacts/new">New Contact</a>
             <br>
             <br>
-            <form action="/" method="post">
-                <div>
-                    <label for="firstName">Firstname: </label>
-                    <input type="text" name="firstName"/>
-                </div>
-
-                <div>
-                    <label for="lastName">Lastname: </label>
-                    <input type="text" name="lastName"/>
-                </div>
-
-                <div>
-                    <label for="email">Email: </label>
-                    <input type="text" name="email"/>
-                </div>
-
-                <div>
-                    <label for="address">Address: </label>
-                    <input type="text" name="address"/>
-                </div>
-
-                <div>
-                    <label for="zipCode">ZipCode: </label>
-                    <input type="text" name="zipCode"/>
-                </div>
-
-                <div>
-                    <label for="city">City: </label>
-                    <input type="text" name="city"/>
-                </div>
-
-                <input type="submit" value="Save New Contact" class="btn btn-primary"/>
+            <form action="contacts/save" th:action="admin/dashboard" th:object="${contact}" method="post">
+                <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
+                <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
+                <p>Address: <input type="text" th:field="*{address}"/></p>
+                <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
+                <p>City: <input type="text" th:field="*{city}"/></p>
+                <p>Email: <input type="text" th:field="*{email}"/></p>
+                <p>Status:
+                    <select name="status">
+                        <th:forEach var="status" items="${statusList}">
+                            <option value="${status}">${status}</option>
+                        </th:forEach>
+                    </select>
+                </p>
+                <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
             </form>
+            <br>
         </main>
     </div>
 </div>

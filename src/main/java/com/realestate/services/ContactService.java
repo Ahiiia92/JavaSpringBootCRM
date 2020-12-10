@@ -12,15 +12,11 @@ import java.util.Optional;
 @Service("contactService")
 public interface ContactService {
     List<Contact> getAllContacts();
-    Contact getContactById(long contactId);
+    List<Contact> findContactsByLastName(String lastName);
+    List<Contact> findContactsByCity(String city);
+    Contact getContactById(Long contactId);
 
-    Contact createContact(long id, Contact contact);
-
-    // Create a contact also without ID:
-    default Contact createContact(Contact contact) {
-        long id = (long)(Math.random());
-        return createContact(id, contact);
-    }
+    void createContact(Contact contact);
 
     Contact updateContact(long id, Contact contact);
     Contact updateContact(Contact contact);

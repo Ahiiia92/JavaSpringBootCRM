@@ -1,3 +1,4 @@
+<%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -43,7 +44,7 @@
             <div class="col-6 mb-4">
             <h3>Add new Contact</h3>
 
-            <form action="#" th:action="/save" th:object="${contact}" method="post">
+            <form action="save" th:action="admin/dashboard" th:object="${contact}" method="post">
                 <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
                 <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
                 <p>Address: <input type="text" th:field="*{address}"/></p>
@@ -53,7 +54,18 @@
                 <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
             </form>
 
-            <a href="/admin/dashboard" class="btn btn-primary">Dashboard</a>
+                <form action="/save" method="post">
+                    <input type="text" name="firstName"/>
+                    <input type="text" name="lastName"/>
+                    <input type="text" name="address"/>
+                    <input type="text" name="zipCode"/>
+                    <input type="text" name="city"/>
+                    <input type="text" name="email"/>
+                    <input type="submit" value="Create new contact"/>
+                </form>
+
+
+                <a href="/admin/dashboard" class="btn btn-primary">Dashboard</a>
             <a href="/" class="btn btn-primary"">Home</a>
             </div>
         </div>

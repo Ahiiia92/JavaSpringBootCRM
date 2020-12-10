@@ -89,6 +89,11 @@
             <version>2.4.0</version>
             <scope>compile</scope>
         </dependency>
+        <!--        thymeleaf-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+<!--        </dependency>-->
         <!--        Bootstrap-->
         <dependency>
             <groupId>org.webjars</groupId>

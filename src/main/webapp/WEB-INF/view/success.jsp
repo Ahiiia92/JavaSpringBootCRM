@@ -45,7 +45,7 @@
         <div class="col">
 
         <h1>Login Successful</h1>
-
+        ${user}
         <p>Welcome User: "${user.firstname}"!</p>
             <span>Full name:</span><span>${user.username}</span><br/>
             <span>E-mail:</span><span>${user.email}</span><br/>

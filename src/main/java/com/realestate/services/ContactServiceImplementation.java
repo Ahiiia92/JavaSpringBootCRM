@@ -17,27 +17,26 @@ public class ContactServiceImplementation implements ContactService {
     @Override
     public List<Contact> getAllContacts() {
         return contactRepository.findAll();
-        // HARD GECODET DATA
-//        List<Contact> listContact = new ArrayList<>();
-//        listContact.add(new Contact("Marry", "John", "marry.john@gmail.com", "rue de l'aglieser", "56531", "berlin"));
-//        listContact.add(new Contact("jean", "John", "marry.drfg@gmail.com", "dsrfhjkjhr", "56531", "berlin"));
-//        listContact.add(new Contact("John", "John", "dsgbjg.john@gmail.com", "dfghjdfg", "56531", "paris"));
-//        return listContact;
     }
 
     @Override
-    public Contact getContactById(long contactId) {
+    public void createContact(Contact contact) { contactRepository.save(contact); }
+
+    @Override
+    public List<Contact> findContactsByLastName(String lastName) {
+        return contactRepository.findByLastName(lastName);
+    }
+
+    @Override
+    public List<Contact> findContactsByCity(String city) {
+        return contactRepository.findByCity(city);
+    }
+
+    @Override
+    public Contact getContactById(Long contactId) {
         Optional<Contact> optContact = contactRepository.findById(contactId);
         return optContact.orElseGet(Contact::new);
     }
-
-    @Override
-    public Contact createContact(long id, Contact contact) {
-        return contactRepository.save(contact);
-    }
-
-    @Override
-    public Contact createContact(Contact contact) { return contactRepository.save(contact); }
 
     @Override
     public Contact updateContact(long id, Contact contact) {

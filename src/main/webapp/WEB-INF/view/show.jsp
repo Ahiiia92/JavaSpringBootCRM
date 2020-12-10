@@ -129,91 +129,112 @@
                 </div>
             </div>
 
-<div class="container">
-    <div class="row mt-5">
-        <div class="col">
-            <div align="center">
-                <c:if test="${contact != null}">
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>ZipCode</th>
-                                <th>City</th>
-                                <th>Account Manager</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>${contact.id}</td>
-                                <td>${contact.firstName}</td>
-                                <td>${contact.lastName}</td>
-                                <td>${contact.email}</td>
-                                <td>${contact.address}</td>
-                                <td>${contact.zipCode}</td>
-                                <td>${contact.city}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <form action="#" th:action="/save" th:object="${contact}" method="post">
-                        <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
-                        <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
-                        <p>Address: <input type="text" th:field="*{address}"/></p>
-                        <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
-                        <p>City: <input type="text" th:field="*{city}"/></p>
-                        <p>Email: <input type="text" th:field="*{email}"/></p>
-                        <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
-                    </form>
-                </c:if>
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col">
+                        <div align="center">
+                            <c:if test="${contact != null}">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Firstname</th>
+                                        <th>Lastname</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th>ZipCode</th>
+                                        <th>City</th>
+                                        <th>Status</th>
+                                        <th>Account Manager</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>${contact.id}</td>
+                                        <td>${contact.firstName}</td>
+                                        <td>${contact.lastName}</td>
+                                        <td>${contact.email}</td>
+                                        <td>${contact.address}</td>
+                                        <td>${contact.zipCode}</td>
+                                        <td>${contact.city}</td>
+<%--                                        <td>${contact.contact_status.LEAD}</td>--%>
+<%--                                        <td>${contact.user.username}</td>--%>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <form action="#" th:action="/save" th:object="${contact}" method="post">
+                                    <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
+                                    <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
+                                    <p>Address: <input type="text" th:field="*{address}"/></p>
+                                    <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
+                                    <p>City: <input type="text" th:field="*{city}"/></p>
+                                    <p>Email: <input type="text" th:field="*{email}"/></p>
+                                    <p>Contact_Status:
+                                        <select name="Status">
+                                            <th:forEach var="status" items="${contactStatus}">
+                                                <option value="${status}">${status}</option>
+                                            </th:forEach>
+                                        </select>
+                                    </p>
+<%--                                    <p>Account Manager:--%>
+<%--                                        <select name="AC">--%>
+<%--                                            <th:forEach var="ac" items="${accountManager}">--%>
+<%--                                                <option value="${ac}">${ac}</option>--%>
+<%--                                            </th:forEach>--%>
+<%--                                        </select>--%>
+<%--                                    </p>--%>
+                                    <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset"
+                                                                                                          value="Reset"
+                                                                                                          class="btn btn-primary"/>
+                                    </p>
+                                </form>
+                                </c:if>
 
-            </div>
-            <c:if test="${user != null}">
-                <div align="center">
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Email</th>
-                                <th>Username</th>
-                                <th>Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>${user.id}</td>
-                                <td>${user.firstname}</td>
-                                <td>${user.lastname}</td>
-                                <td>${user.password}</td>
-                                <td>${user.role}</td>
-                                <td>${user.username}</td>
-                                <td>${user.email}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <form action="#" th:action="/save" th:object="${user}" method="post">
-                        <p>Firstname: <input type="text" th:field="*{firstname}"/></p>
-                        <p>Lastname: <input type="text" th:field="*{lastname}"/></p>
-                        <p>Username: <input type="text" th:field="*{username}"/></p>
-                        <p>Email: <input type="text" th:field="*{email}"/></p>
-                        <p>Password: <input type="text" th:field="*{password}"/></p>
-                        <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
-                    </form>
-            </div>
-        </div>
-            </c:if>
-    </div>
-</div>
-        </main>
+                            </div>
+                            <c:if test="${user != null}">
+                                <div align="center">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-sm">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Firstname</th>
+                                                <th>Lastname</th>
+                                                <th>Email</th>
+                                                <th>Username</th>
+                                                <th>Role</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>${user.id}</td>
+                                                <td>${user.firstname}</td>
+                                                <td>${user.lastname}</td>
+                                                <td>${user.password}</td>
+                                                <td>${user.role}</td>
+                                                <td>${user.username}</td>
+                                                <td>${user.email}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <form action="#" th:action="/save" th:object="${user}" method="post">
+                                            <p>Firstname: <input type="text" th:field="*{firstname}"/></p>
+                                            <p>Lastname: <input type="text" th:field="*{lastname}"/></p>
+                                            <p>Username: <input type="text" th:field="*{username}"/></p>
+                                            <p>Email: <input type="text" th:field="*{email}"/></p>
+                                            <p>Password: <input type="text" th:field="*{password}"/></p>
+                                            <p><input type="submit" value="Save" class="btn btn-primary"/> <input
+                                                    type="reset" value="Reset" class="btn btn-primary"/></p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </c:if>
+                        </div>
+                    </div>
+                </div></main>
 
 </body>
 </html>

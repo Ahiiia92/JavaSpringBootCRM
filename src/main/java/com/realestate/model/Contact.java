@@ -6,6 +6,7 @@ import java.util.List;
 @Entity
 @Table(name = "CRM_Contacts")
 public class Contact {
+
     @Id
     @GeneratedValue
     private long id;
@@ -16,14 +17,15 @@ public class Contact {
     private String zipCode;
     private String city;
     private String email;
+    private Contact_status contact_status;
+
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name = "contact_id")
     private List<User> users;
 
-
     public Contact() { super(); }
 
-    public Contact(String firstName, String lastName, String email, String Address, String zipCode, String city) {
+    public Contact(String firstName, String lastName, String email, String Address, String zipCode, String city, Contact_status contact_status) {
         super();
 //        this.id = id;
         this.firstName = firstName;
@@ -32,6 +34,7 @@ public class Contact {
         this.zipCode = zipCode;
         this.city = city;
         this.email = email;
+        this.contact_status = contact_status;
     }
 
     public long getId() {
@@ -96,6 +99,14 @@ public class Contact {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public Contact_status getContact_status() {
+        return contact_status;
+    }
+
+    public void setContact_status(Contact_status contact_status) {
+        this.contact_status = contact_status;
     }
 
     @Override

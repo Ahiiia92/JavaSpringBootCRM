@@ -7,7 +7,8 @@
     "address": "schellingerst. 26",
     "zipCode": "80799",
     "city": "Muenchen",
-    "users": ""
+    "users": "",
+    "contact_status": "LEAD"
   },
   {
     "firstName": "Bernard",
@@ -16,6 +17,7 @@
     "address": "keineAhnung. 6",
     "zipCode": "98765",
     "city": "Stadt",
-    "users": ""
+    "users": "",
+    "contact_status": "OPPORTUNITY"
   }
 ]

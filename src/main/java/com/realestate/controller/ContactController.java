@@ -2,6 +2,7 @@ package com.realestate.controller;
 
 import com.realestate.exception.ResourceNotFoundException;
 import com.realestate.model.Contact;
+import com.realestate.model.Contact_status;
 import com.realestate.repository.ContactDAO;
 import com.realestate.services.ContactService;
 import com.realestate.services.ContactServiceImplementation;
@@ -14,6 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -23,50 +26,37 @@ public class ContactController {
     @Autowired
     private ContactService contactService;
 
-//    @RequestMapping(value = "/new", method = RequestMethod.POST)
-//    public String addPageContact(@ModelAttribute Contact contact, Model model) {
-//        contactService.createContact(contact);
-//        model.addAttribute("contacts", contactService.getAllContacts());
-//        return "dashboard";
-//    }
-
-    // INDEX
+    // INDEX ==> Works
     @GetMapping("")
     public String allContacts(Model model) {
         List<Contact> contactList = contactService.getAllContacts();
+        List<String> statusList = Arrays.asList(
+                Contact_status.LEAD.toString(),
+                Contact_status.OPPORTUNITY.toString(),
+                Contact_status.CLOSE_LOST.toString(),
+                Contact_status.CLOSE_WIN.toString()
+        );
+        model.addAttribute("statusList", statusList);
         model.addAttribute("contacts", contactList);
+        model.addAttribute("contact", new Contact());
 
         return "contacts";
     }
 
-    // NEW & CREATE
-    @PostMapping("")
-    public String saveContact(@ModelAttribute("contact") Contact contact,
-                              BindingResult result,
-                              ModelMap model) {
-        if (result.hasErrors()) {
-            return "error";
-        }
-        contactService.createContact(contact);
-        model.addAttribute("contacts", contactService.getAllContacts());
-        return "dashboard";
+    // NEW Avec une page differente // MAPPING WORKS
+    @GetMapping("/new")
+    public String showNewContactPage(Model model) {
+        Contact contact = new Contact();
+        model.addAttribute("contact", contact);
+        return "new_contact";
     }
-
-//    // NEW
-//    @GetMapping("/new")
-//    public String showNewContactPage(Model model) {
-//        Contact contact = new Contact();
-//        model.addAttribute("contact", contact);
-//        return "new_contact";
-//    }
-//    // CREATE
-//    @PostMapping(value = "/save")
-//    public String saveContact(@RequestBody Contact contact) {
-//        Contact createdContact = new Contact();
-//        contactService.createContact(contact);
-//        return "dashboard";
-//    }
-
+    // CREATE // MAPPING WORKS // TODO: Params to solve
+    @PostMapping("/save")
+    public String addNewContact(Model model, @ModelAttribute Contact contact) {
+        contactService.createContact(contact);
+        model.addAttribute("contact", contactService.getAllContacts());
+        return "redirect:/admin/dashboard/contacts";
+    }
 
     // SHOW
     @GetMapping("/{id}/show")
@@ -89,6 +79,7 @@ public class ContactController {
         contact.setCity(contactDetails.getCity());
         contact.setEmail(contactDetails.getEmail());
         contact.setUsers(contactDetails.getUsers());
+        contact.setContact_status(contactDetails.getContact_status());
 
         Contact updatedContact = contactService.save(contact);
         ResponseEntity.ok(updatedContact);
@@ -116,6 +107,8 @@ public class ContactController {
         contact.setZipCode(contactDetails.getZipCode());
         contact.setCity(contactDetails.getCity());
         contact.setUsers(contactDetails.getUsers());
+        contact.setContact_status(contactDetails.getContact_status());
+
 
         Contact updatedContact = contactService.save(contact);
 
@@ -123,9 +116,9 @@ public class ContactController {
     }
 
     // TODO: DELETE
-    @RequestMapping("/{id}/delete")
-    public String deleteContact(@PathVariable(name = "id") long id) {
+    @DeleteMapping("/{id}")
+    public String deleteContact(@PathVariable Long id) {
         contactService.deleteContact(id);
-        return "redirect:/admin/dashboard";
+        return "redirect:/dashboard/";
     }
 }

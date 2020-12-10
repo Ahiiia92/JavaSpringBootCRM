@@ -63,8 +63,9 @@ public class LoginController {
 
     // CREATE USER WITH UI
     @PostMapping("/register")
-    public String saveNewUser(@ModelAttribute("user") @RequestBody User user) {
-        userService.createNewUser(user);
+    public String saveNewUser(Model model, @ModelAttribute User user) {
+        User createdUser = userService.createNewUser(user);
+        model.addAttribute("user", createdUser);
         return "success";
     }
 
