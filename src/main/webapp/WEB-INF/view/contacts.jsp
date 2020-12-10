@@ -137,9 +137,15 @@
                             <td>${contact.contact_status}</td>
                             <td>TO DO</td>
                                 <%--                            <td>${contact.user_id}</td>--%>
-                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/show">Show</a></td>
-                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
-                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/delete">Delete</a></td>
+                            <td><a href="contacts/${contact.id}/show">Show</a></td>
+                            <td><a href="contacts/${contact.id}/edit">Edit</a></td>
+                            <td><a href="contacts/${contact.id}/delete" methods="delete">Delete</a></td>
+                            <td>
+                                <form action="delete" method="post">
+                                    <input type="submit" name="delete" value="Delete" />
+                                    <input type="hidden" name="contact" value="${contact.id}" />
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

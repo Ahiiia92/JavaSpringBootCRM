@@ -60,11 +60,8 @@
                     <input type="text" name="email"/>
                     <label for="status">Status:</label>
                     <select name="status" id="contact_status">
-                        <c:forEach var="status" items="${statusList}">
-                            <option value="${status}">Lead</option>
-                            <option value="${status}">Opportunity</option>
-                            <option value="${status}">Close Lost</option>
-                            <option value="${status}">Close Win</option>
+                        <c:forEach var="contact_status" items="${statusList}">
+                            <option value="${contact_status}">${contact_status}</option>
                         </c:forEach>
                     </select>
                     <input type="submit" value="Create new contact"/>

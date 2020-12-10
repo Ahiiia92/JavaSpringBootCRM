@@ -158,7 +158,7 @@
                                         <td>${contact.address}</td>
                                         <td>${contact.zipCode}</td>
                                         <td>${contact.city}</td>
-<%--                                        <td>${contact.contact_status.LEAD}</td>--%>
+                                        <td>${contact.contact_status}</td>
 <%--                                        <td>${contact.user.username}</td>--%>
                                     </tr>
                                     </tbody>
@@ -173,9 +173,9 @@
                                     <p>Email: <input type="text" th:field="*{email}"/></p>
                                     <p>Contact_Status:
                                         <select name="Status">
-                                            <th:forEach var="status" items="${contactStatus}">
+                                            <c:forEach var="status" items="${statusList}">
                                                 <option value="${status}">${status}</option>
-                                            </th:forEach>
+                                            </c:forEach>
                                         </select>
                                     </p>
 <%--                                    <p>Account Manager:--%>
@@ -185,11 +185,39 @@
 <%--                                            </th:forEach>--%>
 <%--                                        </select>--%>
 <%--                                    </p>--%>
-                                    <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset"
-                                                                                                          value="Reset"
-                                                                                                          class="btn btn-primary"/>
+                                    <p><input type="submit" value="Save" class="btn btn-primary"/>
                                     </p>
                                 </form>
+
+                                <br>
+                                <form action="edit" method="put">
+                                    <label for="firstName">FirstName:</label>
+                                    <input type="text" name="firstName"/>
+                                    <label for="firstName">LastName:</label>
+                                    <input type="text" name="lastName"/>
+                                    <label for="firstName">Address:</label>
+                                    <input type="text" name="address"/>
+                                    <label for="firstName">ZipCode:</label>
+                                    <input type="text" name="zipCode"/>
+                                    <label for="firstName">City:</label>
+                                    <input type="text" name="city"/>
+                                    <label for="firstName">Email:</label>
+                                    <input type="text" name="email"/>
+                                    <label for="status">Status:</label>
+                                    <select name="status" id="contact_status">
+                                        <c:forEach var="contact_status" items="${statusList}">
+                                            <option value="${contact_status}">${contact_status}</option>
+                                        </c:forEach>
+                                    </select>
+                                    <input type="submit" value="Update Contact"/>
+                                </form>
+
+                                <td>
+                                    <form action="dashboard" method="delete">
+                                        <input type="submit" name="delete_user" value="Delete" />
+                                            <%--                                    <input type="hidden" name="user" value="${contact.id}" />--%>
+                                    </form>
+                                </td>
                                 </c:if>
 
                             </div>
@@ -220,7 +248,7 @@
                                             </tbody>
                                         </table>
                                         <br>
-                                        <form action="#" th:action="/save" th:object="${user}" method="post">
+                                        <form action="#" th:action="/save" th:object="${user}" method="put">
                                             <p>Firstname: <input type="text" th:field="*{firstname}"/></p>
                                             <p>Lastname: <input type="text" th:field="*{lastname}"/></p>
                                             <p>Username: <input type="text" th:field="*{username}"/></p>

@@ -6,6 +6,7 @@ import com.realestate.model.Contact_status;
 import com.realestate.repository.ContactDAO;
 import com.realestate.services.ContactService;
 import com.realestate.services.ContactServiceImplementation;
+import oracle.ucp.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -76,13 +77,37 @@ public class ContactController {
     public String showContact(Model model, @PathVariable Long id) {
         Contact contact = contactService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(("Contact does not exist with id: " + id)));
+        List<String> statusList = Arrays.asList(
+                Contact_status.LEAD.toString(),
+                Contact_status.OPPORTUNITY.toString(),
+                Contact_status.CLOSE_LOST.toString(),
+                Contact_status.CLOSE_WIN.toString()
+        );
+        model.addAttribute("statusList", statusList);
         ResponseEntity.ok(contact);
         model.addAttribute("contact", contact);
         return "show";
     }
+
+    @GetMapping("/{id}/edit")
+    public ModelAndView showEditContactPage(Model model, @PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("edit");
+        Contact contact = contactService.getContactById(id);
+        List<String> statusList = Arrays.asList(
+                Contact_status.LEAD.toString(),
+                Contact_status.OPPORTUNITY.toString(),
+                Contact_status.CLOSE_LOST.toString(),
+                Contact_status.CLOSE_WIN.toString()
+        );
+        model.addAttribute("statusList", statusList);
+        mav.addObject("contact", contact);
+
+        return mav;
+    }
+
     // TODO: EDIT
-    @PutMapping("/{id}/show")
-    public String updateContact(Model model, @PathVariable Long id, @RequestBody Contact contactDetails) {
+    @PutMapping("/{id}/edit")
+    public String updateContact(Model model, @PathVariable Long id, @ModelAttribute Contact contactDetails) {
         Contact contact = contactService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Contact doesn't exist with id: " + id));
         contact.setFirstName(contactDetails.getFirstName());
@@ -96,42 +121,35 @@ public class ContactController {
 
         Contact updatedContact = contactService.save(contact);
         ResponseEntity.ok(updatedContact);
-        model.addAttribute("contact", contact);
-        return "dashboard";
+        model.addAttribute("contact", contactService.getContactById(contact.getId()));
+        return "redirect:/admin/dashboard/contacts";
     }
-//    public ModelAndView showEditProductPage(@PathVariable(name = "id") long id) {
-//        ModelAndView mav = new ModelAndView("edit_form");
-//        Contact contact = contactService.getContactById(id);
-//        mav.addObject("contact", contact);
-//
-//        return mav;
-//    }
 
     // UPDATE contact rest api
-    @PutMapping("/contacts/{id}/edit_contact")
-    public ResponseEntity<Contact> updateContact(@PathVariable Long id, @RequestBody Contact contactDetails) {
-        Contact contact = contactService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Contact does not exist with id: " + id));
-
-        contact.setFirstName(contactDetails.getFirstName());
-        contact.setLastName(contactDetails.getFirstName());
-        contact.setEmail(contactDetails.getEmail());
-        contact.setAddress(contactDetails.getAddress());
-        contact.setZipCode(contactDetails.getZipCode());
-        contact.setCity(contactDetails.getCity());
-        contact.setUsers(contactDetails.getUsers());
-        contact.setContact_status(contactDetails.getContact_status());
-
-
-        Contact updatedContact = contactService.save(contact);
-
-        return ResponseEntity.ok(updatedContact);
-    }
+//    @PutMapping("/contacts/{id}/edit_contact")
+//    public ResponseEntity<Contact> updateContact(@PathVariable Long id, @RequestBody Contact contactDetails) {
+//        Contact contact = contactService.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("Contact does not exist with id: " + id));
+//
+//        contact.setFirstName(contactDetails.getFirstName());
+//        contact.setLastName(contactDetails.getFirstName());
+//        contact.setEmail(contactDetails.getEmail());
+//        contact.setAddress(contactDetails.getAddress());
+//        contact.setZipCode(contactDetails.getZipCode());
+//        contact.setCity(contactDetails.getCity());
+//        contact.setUsers(contactDetails.getUsers());
+//        contact.setContact_status(contactDetails.getContact_status());
+//
+//
+//        Contact updatedContact = contactService.save(contact);
+//
+//        return ResponseEntity.ok(updatedContact);
+//    }
 
     // TODO: DELETE
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}/delete")
     public String deleteContact(@PathVariable Long id) {
         contactService.deleteContact(id);
-        return "redirect:/dashboard/";
+        return "redirect:/dashboard";
     }
 }
