@@ -44,22 +44,18 @@
             <div class="col-6 mb-4">
             <h3>Add new Contact</h3>
 
-            <form action="save" th:action="admin/dashboard" th:object="${contact}" method="post">
-                <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
-                <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
-                <p>Address: <input type="text" th:field="*{address}"/></p>
-                <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
-                <p>City: <input type="text" th:field="*{city}"/></p>
-                <p>Email: <input type="text" th:field="*{email}"/></p>
-                <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
-            </form>
-
-                <form action="/save" method="post">
+                <form action="save" method="post">
+                    <label for="firstName">FirstName:</label>
                     <input type="text" name="firstName"/>
+                    <label for="firstName">LastName:</label>
                     <input type="text" name="lastName"/>
+                    <label for="firstName">Address:</label>
                     <input type="text" name="address"/>
+                    <label for="firstName">ZipCode:</label>
                     <input type="text" name="zipCode"/>
+                    <label for="firstName">City:</label>
                     <input type="text" name="city"/>
+                    <label for="firstName">Email:</label>
                     <input type="text" name="email"/>
                     <input type="submit" value="Create new contact"/>
                 </form>

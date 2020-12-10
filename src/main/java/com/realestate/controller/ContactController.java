@@ -38,21 +38,27 @@ public class ContactController {
         );
         model.addAttribute("statusList", statusList);
         model.addAttribute("contacts", contactList);
-        model.addAttribute("contact", new Contact());
 
         return "contacts";
     }
 
-    // NEW Avec une page differente // MAPPING WORKS
+//    @PostMapping("")
+//    public String createNewContact(Model model, @RequestBody Contact contact) {
+//        contactService.createContact(contact);
+//        model.addAttribute("contact", contactService.getAllContacts());
+//        return "contacts";
+//    }
+
+    // NEW Avec une page differente // MAPPING WORKS + PARAMS
     @GetMapping("/new")
-    public String showNewContactPage(Model model) {
-        Contact contact = new Contact();
+    public String showNewContactPage(Model model, @ModelAttribute Contact contact) {
+        Contact contactCreatead = new Contact();
         model.addAttribute("contact", contact);
         return "new_contact";
     }
-    // CREATE // MAPPING WORKS // TODO: Params to solve
+    // CREATE // MAPPING WORKS // WOOOORKS (only select doesn't)
     @PostMapping("/save")
-    public String addNewContact(Model model, @ModelAttribute Contact contact) {
+    public String addNewContact(ModelMap model, @ModelAttribute Contact contact) {
         contactService.createContact(contact);
         model.addAttribute("contact", contactService.getAllContacts());
         return "redirect:/admin/dashboard/contacts";

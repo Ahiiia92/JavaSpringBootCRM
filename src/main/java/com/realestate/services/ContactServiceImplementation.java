@@ -20,7 +20,9 @@ public class ContactServiceImplementation implements ContactService {
     }
 
     @Override
-    public void createContact(Contact contact) { contactRepository.save(contact); }
+    public Contact createContact(Contact contact) { contactRepository.save(contact);
+        return contact;
+    }
 
     @Override
     public List<Contact> findContactsByLastName(String lastName) {

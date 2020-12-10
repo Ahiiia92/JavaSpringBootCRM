@@ -16,7 +16,7 @@ public interface ContactService {
     List<Contact> findContactsByCity(String city);
     Contact getContactById(Long contactId);
 
-    void createContact(Contact contact);
+    Contact createContact(Contact contact);
 
     Contact updateContact(long id, Contact contact);
     Contact updateContact(Contact contact);

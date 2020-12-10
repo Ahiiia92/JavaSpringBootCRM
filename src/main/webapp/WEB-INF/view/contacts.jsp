@@ -150,23 +150,6 @@
             <a class="btn btn-primary" href="contacts/new">New Contact</a>
             <br>
             <br>
-            <form action="contacts/save" th:action="admin/dashboard" th:object="${contact}" method="post">
-                <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
-                <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
-                <p>Address: <input type="text" th:field="*{address}"/></p>
-                <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
-                <p>City: <input type="text" th:field="*{city}"/></p>
-                <p>Email: <input type="text" th:field="*{email}"/></p>
-                <p>Status:
-                    <select name="status">
-                        <th:forEach var="status" items="${statusList}">
-                            <option value="${status}">${status}</option>
-                        </th:forEach>
-                    </select>
-                </p>
-                <p><input type="submit" value="Save" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
-            </form>
-            <br>
         </main>
     </div>
 </div>
