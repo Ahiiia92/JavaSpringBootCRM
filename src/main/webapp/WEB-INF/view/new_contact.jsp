@@ -1,4 +1,5 @@
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -57,6 +58,15 @@
                     <input type="text" name="city"/>
                     <label for="firstName">Email:</label>
                     <input type="text" name="email"/>
+                    <label for="status">Status:</label>
+                    <select name="status" id="contact_status">
+                        <c:forEach var="status" items="${statusList}">
+                            <option value="${status}">Lead</option>
+                            <option value="${status}">Opportunity</option>
+                            <option value="${status}">Close Lost</option>
+                            <option value="${status}">Close Win</option>
+                        </c:forEach>
+                    </select>
                     <input type="submit" value="Create new contact"/>
                 </form>
 

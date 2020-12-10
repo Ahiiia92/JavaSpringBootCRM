@@ -53,6 +53,13 @@ public class ContactController {
     @GetMapping("/new")
     public String showNewContactPage(Model model, @ModelAttribute Contact contact) {
         Contact contactCreatead = new Contact();
+        List<String> statusList = Arrays.asList(
+                Contact_status.LEAD.toString(),
+                Contact_status.OPPORTUNITY.toString(),
+                Contact_status.CLOSE_LOST.toString(),
+                Contact_status.CLOSE_WIN.toString()
+        );
+        model.addAttribute("statusList", statusList);
         model.addAttribute("contact", contact);
         return "new_contact";
     }
