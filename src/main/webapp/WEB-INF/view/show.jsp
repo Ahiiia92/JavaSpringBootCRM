@@ -248,15 +248,38 @@
                                             </tbody>
                                         </table>
                                         <br>
-                                        <form action="#" th:action="/save" th:object="${user}" method="put">
-                                            <p>Firstname: <input type="text" th:field="*{firstname}"/></p>
-                                            <p>Lastname: <input type="text" th:field="*{lastname}"/></p>
-                                            <p>Username: <input type="text" th:field="*{username}"/></p>
-                                            <p>Email: <input type="text" th:field="*{email}"/></p>
-                                            <p>Password: <input type="text" th:field="*{password}"/></p>
-                                            <p><input type="submit" value="Save" class="btn btn-primary"/> <input
-                                                    type="reset" value="Reset" class="btn btn-primary"/></p>
+                                        <form action="show" method="put">
+                                            <label>Firstname:</label>
+                                            <input type="text" name="firstname"/>
+
+                                            <label>Laststname:</label>
+                                            <input type="text" name="lastname"/>
+
+                                            <label>Username:</label>
+                                            <input type="text" name="username"/>
+
+                                            <label>Email:</label>
+                                            <input type="text" name="email"/>
+
+                                            <label>Password:</label>
+                                            <input type="password" name="password"/>
+
+                                            <select name="role" id="role">
+                                                <c:forEach var="role" items="${roleList}">
+                                                    <option value="${role}">${role}</option>
+                                                </c:forEach>
+                                            </select>
+                                            <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
                                         </form>
+<%--                                        <form action="#" th:action="/save" th:object="${user}" method="put">--%>
+<%--                                            <p>Firstname: <input type="text" th:field="*{firstname}"/></p>--%>
+<%--                                            <p>Lastname: <input type="text" th:field="*{lastname}"/></p>--%>
+<%--                                            <p>Username: <input type="text" th:field="*{username}"/></p>--%>
+<%--                                            <p>Email: <input type="text" th:field="*{email}"/></p>--%>
+<%--                                            <p>Password: <input type="text" th:field="*{password}"/></p>--%>
+<%--                                            <p><input type="submit" value="Save" class="btn btn-primary"/> <input--%>
+<%--                                                    type="reset" value="Reset" class="btn btn-primary"/></p>--%>
+<%--                                        </form>--%>
                                     </div>
                                 </div>
                             </c:if>

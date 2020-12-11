@@ -41,10 +41,11 @@
         <div class="col">
             <div class="col-6 mb-4">
                 <h1>Login</h1>
-                <form action="#" th:action="@{/success}" th:object="${user}" method="post">
+                <form action="login/admin/marou/password" th:action="@{/success}" th:object="${user}" method="get">
                     <p>Username: <input type="text" th:field="*{username}" /></p>
                     <p>Password: <input type="text" th:field="*{password}" /></p>
-                    <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary" /></p>
+                    <p><input type="submit" value="Submit" class="btn btn-primary"/></p>
+                    <a href="/login/new" class="btn btn-primary">Sign-up</a>
                 </form>
             </div>
         </div>

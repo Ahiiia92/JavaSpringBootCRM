@@ -44,19 +44,27 @@
     <div class="row mt-5">
         <div class="col">
             <h3>Sign-Up</h3>
-            <form action="register" th:action="@{/users}" th:object="${user}" method="post">
-                <p>Firstname: <input type="text" th:field="*{firstname}"/></p>
-                <p>Lastname: <input type="text" th:field="*{lastname}"/></p>
-                <p>Username: <input type="text" th:field="*{username}"/></p>
-                <p>Email: <input type="text" th:field="*{email}"/></p>
-                <p>Role:
-                    <select name="Role">
-                        <th:forEach var="role" items="${roleList}">
+            <form action="register" method="post">
+                    <label>Firstname:</label>
+                    <input type="text" name="firstname"/>
+
+                    <label>Laststname:</label>
+                    <input type="text" name="lastname"/>
+
+                    <label>Username:</label>
+                    <input type="text" name="username"/>
+
+                    <label>Email:</label>
+                    <input type="text" name="email"/>
+
+                    <label>Password:</label>
+                    <input type="text" name="password"/>
+
+                    <select name="role" id="role">
+                        <c:forEach var="role" items="${roleList}">
                             <option value="${role}">${role}</option>
-                        </th:forEach>
+                        </c:forEach>
                     </select>
-                </p>
-                <p>Password: <input type="text" th:field="*{password}"/></p>
                 <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
             </form>
 

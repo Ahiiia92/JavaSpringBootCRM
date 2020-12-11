@@ -44,19 +44,17 @@
     <div class="row mt-5">
         <div class="col">
 
-        <h1>Login Successful</h1>
-        ${user}
-        <p>Welcome User: "${user.firstname}"!</p>
-            <span>Full name:</span><span>${user.username}</span><br/>
-            <span>E-mail:</span><span>${user.email}</span><br/>
-            <span>Password:</span><span>${user.password}</span><br/>
-            <span>Role:</span><span>${user.role}</span><br/>
-        <br>
-            <img src="https://media4.giphy.com/media/l4HodBpDmoMA5p9bG/giphy.gif" alt="">
+        <h1>Login Successful !</h1>
+<%--            To implement with Spring Security later on--%>
+<%--        <p>Welcome User: "${user.firstname}"!</p>--%>
+<%--            <span>Full name:</span><span>${user.username}</span><br/>--%>
+<%--            <span>E-mail:</span><span>${user.email}</span><br/>--%>
+<%--            <span>Password:</span><span>${user.password}</span><br/>--%>
+<%--            <span>Role:</span><span>${user.role}</span><br/>--%>
+<%--        <br>--%>
             <br>
             <div class="col-6">
         <a href="/admin/dashboard" class="btn btn-primary">Dashboard</a>
-        <a href="/login" class="btn btn-primary">Submit another message</a>
             </div>
         </div>
     </div>

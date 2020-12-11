@@ -1,6 +1,7 @@
 package com.realestate.controller;
 
 import com.realestate.exception.ResourceNotFoundException;
+import com.realestate.model.Contact;
 import com.realestate.model.User;
 import com.realestate.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = {"/login"})
@@ -53,9 +55,8 @@ public class LoginController {
 
     // NEW
     @GetMapping("/new")
-    public String showNewUserPage(Model model) {
-        User user = new User();
-        List<String> roleList = Arrays.asList("Sales Repo", "Sales Manager");
+    public String showNewUserPage(Model model, @ModelAttribute User user) {
+        List<String> roleList = Arrays.asList("Sales Team", "Sales Manager");
         model.addAttribute("user", user);
         model.addAttribute("roleList", roleList);
         return "sign_up";
@@ -64,8 +65,8 @@ public class LoginController {
     // CREATE USER WITH UI
     @PostMapping("/register")
     public String saveNewUser(Model model, @ModelAttribute User user) {
-        User createdUser = userService.createNewUser(user);
-        model.addAttribute("user", createdUser);
+        userService.createNewUser(user);
+        model.addAttribute("user", userService.findById(user.getId()));
         return "success";
     }
 
@@ -76,6 +77,17 @@ public class LoginController {
 //                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
 //        updateUser(id, userDetails);
 //    }
+
+    @GetMapping("users/{id}/show")
+    public String showUser(Model model, @PathVariable Long id) {
+        List<String> roleList = Arrays.asList("Sales Team", "Sales Manager");
+        model.addAttribute("roleList", roleList);
+
+        User user = userService.findById(id).orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + id));
+        ResponseEntity.ok(user);
+        model.addAttribute("user", user);
+        return "show";
+    }
 
     // TODO: UPDATE USER WITH UI
     @PutMapping("users/{id}/show")
@@ -91,16 +103,16 @@ public class LoginController {
 
         User updatedUser = userService.save(user);
         ResponseEntity.ok(updatedUser);
-        model.addAttribute("user", user);
-        return "show";
+        model.addAttribute("user", userService.findById(updatedUser.getId()));
+        return "redirect:/show";
     }
 
-    @GetMapping("users/{id}/show")
-    public String showUser(Model model, @PathVariable Long id) {
-        User user = userService.findById(id).orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + id));
-        ResponseEntity.ok(user);
-        model.addAttribute("user", user);
-        return "show";
-    }
     // TODO: DELETE
+    @DeleteMapping("users/{id}")
+    public String deleteUserById(@PathVariable Long id) {
+        User user = userService.findById(id)
+                .orElseThrow(() -> new org.apache.velocity.exception.ResourceNotFoundException("User does not exist with id :" + id));
+        userService.delete(user);
+        return "redirect:/admin/dashboard";
+    }
 }
