@@ -116,7 +116,7 @@ public class ContactController {
         contact.setZipCode(contactDetails.getZipCode());
         contact.setCity(contactDetails.getCity());
         contact.setEmail(contactDetails.getEmail());
-        contact.setUsers(contactDetails.getUsers());
+        contact.setUser(contactDetails.getUser());
         contact.setContact_status(contactDetails.getContact_status());
 
         Contact updatedContact = contactService.save(contact);
@@ -125,31 +125,11 @@ public class ContactController {
         return "redirect:/admin/dashboard/contacts";
     }
 
-    // UPDATE contact rest api
-//    @PutMapping("/contacts/{id}/edit_contact")
-//    public ResponseEntity<Contact> updateContact(@PathVariable Long id, @RequestBody Contact contactDetails) {
-//        Contact contact = contactService.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Contact does not exist with id: " + id));
-//
-//        contact.setFirstName(contactDetails.getFirstName());
-//        contact.setLastName(contactDetails.getFirstName());
-//        contact.setEmail(contactDetails.getEmail());
-//        contact.setAddress(contactDetails.getAddress());
-//        contact.setZipCode(contactDetails.getZipCode());
-//        contact.setCity(contactDetails.getCity());
-//        contact.setUsers(contactDetails.getUsers());
-//        contact.setContact_status(contactDetails.getContact_status());
-//
-//
-//        Contact updatedContact = contactService.save(contact);
-//
-//        return ResponseEntity.ok(updatedContact);
-//    }
-
     // TODO: DELETE
-    @DeleteMapping("{id}/delete")
-    public String deleteContact(@PathVariable Long id) {
+    @PostMapping("/deleteContact")
+    public String deleteContact(ModelMap mode, @PathVariable Long id) {
         contactService.deleteContact(id);
+        mode.addAttribute("contacts", contactService.getAllContacts());
         return "redirect:/dashboard";
     }
 }

@@ -16,7 +16,6 @@ public class User {
     private String password;
     private String role;
     @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="user_id")
     private List<Contact> contacts;
 
     public User() { super(); }

@@ -1,9 +1,7 @@
 package com.realestate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -14,12 +12,16 @@ public class Property {
 
     private String availability;
     private int rooms;
-    private float surface;
+    private double surface;
     private int price;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
 
     public Property() { super(); }
 
-    public Property(String availability, int rooms, float surface, int price) {
+    public Property(String availability, int rooms, double surface, int price) {
         this.availability = availability;
         this.rooms = rooms;
         this.surface = surface;
@@ -50,12 +52,8 @@ public class Property {
         this.rooms = rooms;
     }
 
-    public float getSurface() {
+    public double getSurface() {
         return surface;
-    }
-
-    public void setSurface(float surface) {
-        this.surface = surface;
     }
 
     public int getPrice() {
@@ -64,6 +62,18 @@ public class Property {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public void setSurface(double surface) {
+        this.surface = surface;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     @Override

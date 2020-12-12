@@ -116,6 +116,9 @@
                     <c:if test="${user != null}">
                         User: ${user.username} - ${user.lastname}
                     </c:if>
+                    <c:if test="${property != null}">
+                        Property: #${property.id} - ${property.surface}sqm
+                    </c:if>
                 </h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
@@ -134,7 +137,8 @@
                     <div class="col">
                         <div align="center">
                             <c:if test="${contact != null}">
-                            <div class="table-responsive">
+                                <div align="center">
+                                    <div class="table-responsive">
                                 <table class="table table-striped table-sm">
                                     <thead>
                                     <tr>
@@ -164,20 +168,20 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                <form action="#" th:action="/save" th:object="${contact}" method="post">
-                                    <p>Firstname: <input type="text" th:field="*{firstName}"/></p>
-                                    <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
-                                    <p>Address: <input type="text" th:field="*{address}"/></p>
-                                    <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>
-                                    <p>City: <input type="text" th:field="*{city}"/></p>
-                                    <p>Email: <input type="text" th:field="*{email}"/></p>
-                                    <p>Contact_Status:
-                                        <select name="Status">
-                                            <c:forEach var="status" items="${statusList}">
-                                                <option value="${status}">${status}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </p>
+<%--                                <form action="#" th:action="/save" th:object="${contact}" method="post">--%>
+<%--                                    <p>Firstname: <input type="text" th:field="*{firstName}"/></p>--%>
+<%--                                    <p>Lastname: <input type="text" th:field="*{lastName}"/></p>--%>
+<%--                                    <p>Address: <input type="text" th:field="*{address}"/></p>--%>
+<%--                                    <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>--%>
+<%--                                    <p>City: <input type="text" th:field="*{city}"/></p>--%>
+<%--                                    <p>Email: <input type="text" th:field="*{email}"/></p>--%>
+<%--                                    <p>Contact_Status:--%>
+<%--                                        <select name="Status">--%>
+<%--                                            <c:forEach var="status" items="${statusList}">--%>
+<%--                                                <option value="${status}">${status}</option>--%>
+<%--                                            </c:forEach>--%>
+<%--                                        </select>--%>
+<%--                                    </p>--%>
 <%--                                    <p>Account Manager:--%>
 <%--                                        <select name="AC">--%>
 <%--                                            <th:forEach var="ac" items="${accountManager}">--%>
@@ -185,9 +189,9 @@
 <%--                                            </th:forEach>--%>
 <%--                                        </select>--%>
 <%--                                    </p>--%>
-                                    <p><input type="submit" value="Save" class="btn btn-primary"/>
-                                    </p>
-                                </form>
+<%--                                    <p><input type="submit" value="Save" class="btn btn-primary"/>--%>
+<%--                                    </p>--%>
+<%--                                </form>--%>
 
                                 <br>
                                 <form action="edit" method="put">
@@ -215,12 +219,12 @@
                                 <td>
                                     <form action="dashboard" method="delete">
                                         <input type="submit" name="delete_user" value="Delete" />
-                                            <%--                                    <input type="hidden" name="user" value="${contact.id}" />--%>
+                                        <input type="hidden" name="user" value="${contact.id}" />
                                     </form>
                                 </td>
-                                </c:if>
-
                             </div>
+                                </div>
+                            </c:if>
                             <c:if test="${user != null}">
                                 <div align="center">
                                     <div class="table-responsive">
@@ -271,17 +275,56 @@
                                             </select>
                                             <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
                                         </form>
-<%--                                        <form action="#" th:action="/save" th:object="${user}" method="put">--%>
-<%--                                            <p>Firstname: <input type="text" th:field="*{firstname}"/></p>--%>
-<%--                                            <p>Lastname: <input type="text" th:field="*{lastname}"/></p>--%>
-<%--                                            <p>Username: <input type="text" th:field="*{username}"/></p>--%>
-<%--                                            <p>Email: <input type="text" th:field="*{email}"/></p>--%>
-<%--                                            <p>Password: <input type="text" th:field="*{password}"/></p>--%>
-<%--                                            <p><input type="submit" value="Save" class="btn btn-primary"/> <input--%>
-<%--                                                    type="reset" value="Reset" class="btn btn-primary"/></p>--%>
-<%--                                        </form>--%>
                                     </div>
                                 </div>
+                            </c:if>
+                            <c:if test="${property != null}">
+                                    <div align="center">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-sm">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Availability</th>
+                                                    <th>Price</th>
+                                                    <th>Surface</th>
+                                                    <th>Rooms</th>
+                                                    <th>Client</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>${property.id}</td>
+                                                    <td>${property.availability}</td>
+                                                    <td>${property.price}</td>
+                                                    <td>${property.surface}</td>
+                                                    <td>${property.rooms}</td>
+<%--                                                    <td>${property.contact_id.lastName}</td>--%>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <h2>Edit Property</h2>
+                                            <form action="/{id}" method="put">
+                                                <label>Availability:</label>
+                                                <input type="text" name="availability"/>
+
+                                                <label>Price:</label>
+                                                <input type="number" name="price"/>
+
+                                                <label>Rooms:</label>
+                                                <input type="number" name="rooms"/>
+
+                                                <label>Surface:</label>
+                                                <input type="number" name="surface"/>
+
+                                                <label>Client:</label>
+                                                <input type="text" name="contact_id"/>
+
+                                                <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
+                                            </form>
+                                        </div>
+                                    </div>
                             </c:if>
                         </div>
                     </div>

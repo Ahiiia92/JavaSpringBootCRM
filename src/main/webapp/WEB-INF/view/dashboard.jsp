@@ -145,7 +145,12 @@
                                 <%--                            <td>${contact.user_id}</td>--%>
                             <td><a href="dashboard/contacts/${contact.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
-                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/delete">Delete</a></td>
+                            <td>
+                                <form action="/admin/dashboard/contacts/deleteContact" method="post">
+                                    <input type="hidden" name="id" value="${contact.id}"/>
+                                    <input type="submit" value="Delete Contact"/>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -178,12 +183,56 @@
                             <td>${user.role}</td>
                             <td><a href="/login/users/${user.id}/show">Show</a></td>
                             <td><a href="${pageContext.request.contextPath}/users/${user.id}/edit">Edit</a></td>
-                            <td><a href="${pageContext.request.contextPath}/users/${user.id}/delete">Delete</a></td>
+                            <td>
+                                <form action="/login/users/deleteUser" method="post">
+                                    <input type="hidden" name="id" value="${user.id}"/>
+                                    <input type="submit" value="Delete User"/>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
+            <br>
+            <br>
+            <h2>Property list</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Availability</th>
+                        <th>Price</th>
+                        <th>Rooms</th>
+                        <th>Surface</th>
+                        <th>Contact</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="property" items="${properties}">
+                        <tr>
+                            <td>${property.id}</td>
+                            <td>${property.availability}</td>
+                            <td>${property.price}</td>
+                            <td>${property.rooms}</td>
+                            <td>${property.surface}</td>
+                            <td>${property.contact}</td>
+                            <td>TO DO</td>
+                            <td><a href="dashboard/properties/${property.id}/show">Show</a></td>
+                            <td><a href="dashboard/properties/${property.id}/edit">Edit</a></td>
+                            <td>
+                                <form action="/admin/dashboard/properties/deleteProperty" method="post">
+                                    <input type="hidden" name="id" value="${property.id}"/>
+                                    <input type="submit" value="Delete Property"/>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <a href="dashboard/properties" class="btn btn-primary">List of Properties</a>
         </main>
         </div>
     </div>

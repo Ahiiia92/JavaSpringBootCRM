@@ -19,9 +19,12 @@ public class Contact {
     private String email;
     private Contact_status contact_status;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name = "contact_id")
-    private List<User> users;
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "sales_user_id")
+    private User user;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Property> properties;
 
     public Contact() { super(); }
 
@@ -35,6 +38,22 @@ public class Contact {
         this.city = city;
         this.email = email;
         this.contact_status = contact_status;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public long getId() {
@@ -91,14 +110,6 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 
     public Contact_status getContact_status() {
