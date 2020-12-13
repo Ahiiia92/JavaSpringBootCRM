@@ -168,32 +168,8 @@
                                     </tbody>
                                 </table>
                                 <br>
-<%--                                <form action="#" th:action="/save" th:object="${contact}" method="post">--%>
-<%--                                    <p>Firstname: <input type="text" th:field="*{firstName}"/></p>--%>
-<%--                                    <p>Lastname: <input type="text" th:field="*{lastName}"/></p>--%>
-<%--                                    <p>Address: <input type="text" th:field="*{address}"/></p>--%>
-<%--                                    <p>Zip Code: <input type="text" th:field="*{zipCode}"/></p>--%>
-<%--                                    <p>City: <input type="text" th:field="*{city}"/></p>--%>
-<%--                                    <p>Email: <input type="text" th:field="*{email}"/></p>--%>
-<%--                                    <p>Contact_Status:--%>
-<%--                                        <select name="Status">--%>
-<%--                                            <c:forEach var="status" items="${statusList}">--%>
-<%--                                                <option value="${status}">${status}</option>--%>
-<%--                                            </c:forEach>--%>
-<%--                                        </select>--%>
-<%--                                    </p>--%>
-<%--                                    <p>Account Manager:--%>
-<%--                                        <select name="AC">--%>
-<%--                                            <th:forEach var="ac" items="${accountManager}">--%>
-<%--                                                <option value="${ac}">${ac}</option>--%>
-<%--                                            </th:forEach>--%>
-<%--                                        </select>--%>
-<%--                                    </p>--%>
-<%--                                    <p><input type="submit" value="Save" class="btn btn-primary"/>--%>
-<%--                                    </p>--%>
-<%--                                </form>--%>
-
                                 <br>
+                                <h1>Edit Contact</h1>
                                 <form action="edit" method="put">
                                     <label for="firstName">FirstName:</label>
                                     <input type="text" name="firstName"/>

@@ -40,23 +40,23 @@ public class AppController {
         return "dashboard";
     }
 
-    @PostMapping("/deleteProperty")
-    public String deleteProperty(ModelMap model, @RequestParam long id) {
-        propertyService.removeProperty(id);
-        model.addAttribute("properties", propertyService.findAllProperty());
-        model.addAttribute("contacts", contactService.getAllContacts());
-        model.addAttribute("users", userService.getAllUsers());
-        return "redirect:/admin/dashboard";
-    }
-
-    @PostMapping("/deleteContact")
-    public String deleteContact(ModelMap model, @RequestParam long id) {
-        contactService.deleteContact(id);
-        model.addAttribute("properties", propertyService.findAllProperty());
-        model.addAttribute("contacts", contactService.getAllContacts());
-        model.addAttribute("users", userService.getAllUsers());
-        return "redirect:/admin/dashboard";
-    }
+//    @PostMapping("/deleteProperty")
+//    public String deleteProperty(ModelMap model, @RequestParam long id) {
+//        propertyService.removeProperty(id);
+//        model.addAttribute("properties", propertyService.findAllProperty());
+//        model.addAttribute("contacts", contactService.getAllContacts());
+//        model.addAttribute("users", userService.getAllUsers());
+//        return "redirect:/admin/dashboard";
+//    }
+//
+//    @PostMapping("/deleteContact")
+//    public String deleteContact(ModelMap model, @RequestParam long id) {
+//        contactService.deleteContact(id);
+//        model.addAttribute("properties", propertyService.findAllProperty());
+//        model.addAttribute("contacts", contactService.getAllContacts());
+//        model.addAttribute("users", userService.getAllUsers());
+//        return "redirect:/admin/dashboard";
+//    }
 
     @GetMapping({"/", "index"})
     public String index() {

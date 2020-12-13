@@ -3,6 +3,7 @@ package com.realestate.controller;
 import com.realestate.exception.ResourceNotFoundException;
 import com.realestate.model.Contact;
 import com.realestate.model.Contact_status;
+import com.realestate.model.User;
 import com.realestate.repository.ContactDAO;
 import com.realestate.services.ContactService;
 import com.realestate.services.ContactServiceImplementation;
@@ -125,11 +126,10 @@ public class ContactController {
         return "redirect:/admin/dashboard/contacts";
     }
 
-    // TODO: DELETE
     @PostMapping("/deleteContact")
-    public String deleteContact(ModelMap mode, @PathVariable Long id) {
+    public String deleteContact(ModelMap mode, @RequestParam long id) {
         contactService.deleteContact(id);
         mode.addAttribute("contacts", contactService.getAllContacts());
-        return "redirect:/dashboard";
+        return "redirect:/admin/dashboard/contacts";
     }
 }

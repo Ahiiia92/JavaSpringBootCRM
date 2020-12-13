@@ -108,7 +108,6 @@ public class LoginController {
         return "redirect:/show";
     }
 
-    // TODO: DELETE
     @PostMapping("users/deleteUser")
     public String deleteUserById(ModelMap model, @RequestParam long id) {
         User user = userService.findById(id)
