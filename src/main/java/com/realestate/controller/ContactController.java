@@ -132,4 +132,10 @@ public class ContactController {
         mode.addAttribute("contacts", contactService.getAllContacts());
         return "redirect:/admin/dashboard/contacts";
     }
+
+    // TODO: Link Contact to Users. A contact belongs to a specific user. Need to do the link with the Instructor repo and contaxct repo.
+    @GetMapping("/login/users/{userId}/contacts")
+    public List < Contact > getContactsByUser (@PathVariable(value = "postId") Long userId) {
+        return contactService.findByUserId(userId);
+    }
 }

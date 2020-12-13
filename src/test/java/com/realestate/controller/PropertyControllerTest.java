@@ -31,7 +31,7 @@ public class PropertyControllerTest {
         Property expectedProperty = new Property("2020", 4, 53.45, 150_000);
         Mockito.when(mockPropertyService.findById(1)).thenReturn(java.util.Optional.of(expectedProperty));
 
-        mockMvc.perform(get("/admin/dashboard/properties/1"))
+        mockMvc.perform(get("/admin/dashboard/properties/1/show"))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("property", expectedProperty))
                 .andExpect(view().name("show"));

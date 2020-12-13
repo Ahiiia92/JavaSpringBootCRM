@@ -98,4 +98,9 @@ public class ContactServiceImplementation implements ContactService {
 
     @Override
     public Optional<Contact> findById(Long id) { return contactRepository.findById(id); }
+
+    @Override
+    public List<Contact> findByUserId(Long userId) {
+        return null;
+    }
 }

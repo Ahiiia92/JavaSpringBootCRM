@@ -39,7 +39,7 @@ public class ContactControllerTest {
         Mockito.when(mockContactService.findById((long) 1)).thenReturn(java.util.Optional.of(expectedContact));
 
 //        Verifying HTTP Request Matching
-        mockMvc.perform(get("/admin/dashboard/contacts/1"))
+        mockMvc.perform(get("/admin/dashboard/contacts/1/show"))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("contact", expectedContact))
                 .andExpect(view().name("show"));
@@ -56,7 +56,7 @@ public class ContactControllerTest {
     @Test
     public void test_PostMethod_withCorrectAttributes() throws Exception {
         Contact expectedContact = new Contact("Marry", "John", "marry.john@gmail.com", "rue de l'église", "56531", "berlin", Contact_status.LEAD);
-        mockMvc.perform(post("/admin/dashboard/contacts")
+        mockMvc.perform(post("/save")
                 .param("firstName", "Marry")
                 .param("lastName", "John")
                 .param("email", "marry.john@gmail.com")

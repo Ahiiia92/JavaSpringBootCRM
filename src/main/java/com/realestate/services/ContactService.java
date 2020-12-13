@@ -26,4 +26,6 @@ public interface ContactService {
     void deleteContact(long id);
 
     Optional<Contact> findById(Long id);
+
+    List<Contact> findByUserId(Long userId);
 }
