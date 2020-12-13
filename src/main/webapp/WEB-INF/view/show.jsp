@@ -35,25 +35,25 @@
             <div class="sidebar-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard">
+                        <a class="nav-link" href="/admin/dashboard">
                             <span data-feather="home"></span>
                             Dashboard<span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard/contacts">
+                        <a class="nav-link" href="/admin/dashboard/contacts">
                             <span data-feather="file"></span>
                             Contacts
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href=/admin/dashboard/properties#">
                             <span data-feather="shopping-cart"></span>
                             Properties
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/login/users">
                             <span data-feather="users"></span>
                             Users
                         </a>
@@ -234,9 +234,10 @@
                                                 <th>#</th>
                                                 <th>Firstname</th>
                                                 <th>Lastname</th>
-                                                <th>Email</th>
-                                                <th>Username</th>
+                                                <th>Password</th>
                                                 <th>Role</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
                                             </tr>
                                             </thead>
                                             <tbody>

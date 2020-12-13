@@ -22,25 +22,25 @@
             <div class="sidebar-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard">
+                        <a class="nav-link" href="/admin/dashboard">
                             <span data-feather="home"></span>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="/admin/dashboard/contacts">
                             <span data-feather="file"></span>
                             Contacts
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/admin/dashboard/properties">
                             <span data-feather="shopping-cart"></span>
                             Properties
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/login/users">
                             <span data-feather="users"></span>
                             Users
                         </a>
@@ -136,8 +136,7 @@
                             <td>${contact.city}</td>
                             <td>${contact.contact_status}</td>
                             <td>TO DO</td>
-                                <%--                            <td>${contact.user_id}</td>--%>
-                            <td><a href="contacts/${contact.id}/show">Show</a></td>
+                            <td><a href="/admin/dashboard/contacts/${contact.id}/show">Show</a></td>
                             <td><a href="contacts/${contact.id}/edit">Edit</a></td>
                             <td><a href="contacts/${contact.id}/delete" methods="delete">Delete</a></td>
                             <td>

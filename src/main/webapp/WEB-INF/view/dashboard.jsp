@@ -25,25 +25,25 @@
             <div class="sidebar-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard">
+                        <a class="nav-link active" href="/admin/dashboard">
                             <span data-feather="home"></span>
                             Dashboard<span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard/contacts">
+                        <a class="nav-link" href="/admin/dashboard/contacts">
                             <span data-feather="file"></span>
                             Contacts
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/admin/dashboard/properties">
                             <span data-feather="shopping-cart"></span>
                             Properties
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/login/users">
                             <span data-feather="users"></span>
                             Users
                         </a>
@@ -143,8 +143,8 @@
                             <td>TO DO</td>
                             <td>${contact.contact_status}</td>
                                 <%--                            <td>${contact.user_id}</td>--%>
-                            <td><a href="dashboard/contacts/${contact.id}/show">Show</a></td>
-                            <td><a href="${pageContext.request.contextPath}/contacts/${contact.id}/edit">Edit</a></td>
+                            <td><a href="/admin/dashboard/contacts/${contact.id}/show">Show</a></td>
+                            <td><a href="/admin/dashboard/contacts/${contact.id}/edit">Edit</a></td>
                             <td>
                                 <form action="/admin/dashboard/contacts/deleteContact" method="post">
                                     <input type="hidden" name="id" value="${contact.id}"/>

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -108,11 +109,12 @@ public class LoginController {
     }
 
     // TODO: DELETE
-    @DeleteMapping("users/{id}")
-    public String deleteUserById(@PathVariable Long id) {
+    @PostMapping("users/deleteUser")
+    public String deleteUserById(ModelMap model, @RequestParam long id) {
         User user = userService.findById(id)
                 .orElseThrow(() -> new org.apache.velocity.exception.ResourceNotFoundException("User does not exist with id :" + id));
         userService.delete(user);
-        return "redirect:/admin/dashboard";
+        model.addAttribute("users", userService.getAllUsers());
+        return "redirect:/login/users";
     }
 }
