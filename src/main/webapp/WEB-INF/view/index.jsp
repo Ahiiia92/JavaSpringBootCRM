@@ -48,11 +48,9 @@
     </header>
 
     <main role="main" class="inner cover">
-        <h1 class="cover-heading">Cover your page.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+        <h1 class="cover-heading">CRM Real Estate.</h1>
+        <p class="lead">Here is your Headline! Follow your sales process thanks to CRM Real Estate</p>
         <p class="lead">
-            <a class="btn btn-lg btn-secondary" href="admin/dashboard/contacts/new">New Contact</a>
-            <a class="btn btn-lg btn-secondary" href="login/new">New User</a>
         </p>
     </main>
 

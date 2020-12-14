@@ -135,7 +135,7 @@
                             <td>${contact.zipCode}</td>
                             <td>${contact.city}</td>
                             <td>${contact.contact_status}</td>
-                            <td>TO DO</td>
+                            <td>biancacita</td>
                             <td><a href="/admin/dashboard/contacts/${contact.id}/show">Show</a></td>
                             <td><a href="contacts/${contact.id}/edit">Edit</a></td>
                             <td><a href="contacts/${contact.id}/delete" methods="delete">Delete</a></td>

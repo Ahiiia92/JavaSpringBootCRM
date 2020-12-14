@@ -56,14 +56,13 @@ public class ContactControllerTest {
     @Test
     public void test_PostMethod_withCorrectAttributes() throws Exception {
         Contact expectedContact = new Contact("Marry", "John", "marry.john@gmail.com", "rue de l'église", "56531", "berlin", Contact_status.LEAD);
-        mockMvc.perform(post("/save")
+        mockMvc.perform(post("/admin/dashboard/contacts/save")
                 .param("firstName", "Marry")
                 .param("lastName", "John")
                 .param("email", "marry.john@gmail.com")
                 .param("address", "rue de l'église")
                 .param("zipCode", "56531")
-                .param("city", "Berlin")
-                .param("contact_status", String.valueOf(Contact_status.LEAD)))
+                .param("city", "Berlin"))
                 .andExpect(status().isOk());
 
         Mockito.verify(mockContactService).createContact(expectedContact);

@@ -58,6 +58,8 @@
                     <input type="text" name="city"/>
                     <label for="firstName">Email:</label>
                     <input type="text" name="email"/>
+                    <label for="user">Account Name:</label>
+                    <input type="hidden" name="user" value="27"/>
                     <label for="status">Status:</label>
                     <select name="status" id="contact_status">
                         <c:forEach var="contact_status" items="${statusList}">
