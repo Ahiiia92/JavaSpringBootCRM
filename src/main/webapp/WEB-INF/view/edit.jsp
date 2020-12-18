@@ -143,42 +143,33 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <form action="edit" method="put">
-                                <tr>
-                                    <td><label for="firstName">FirstName:</label></td>
-                                    <td><input type="text" name="firstName"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="firstName">LastName:</label></td>
-                                    <td><input type="text" name="lastName"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="firstName">Address:</label></td>
-                                    <td><input type="text" name="address"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="firstName">ZipCode:</label></td>
-                                    <td><input type="text" name="zipCode"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="firstName">City:</label></td>
-                                    <td><input type="text" name="city"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="firstName">Email:</label></td>
-                                    <td><input type="text" name="email"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="contact_status">Status: </label></td>
-                                    <td>
-                                        <select name="status" id="contact_status">
-                                            <c:forEach var="contact_status" items="${statusList}">
+                            <form action="edit" method="post">
+                                <input type="hidden" name="id" value="${contact.id}">
+                                    <label for="firstName">FirstName:</label>
+                                    <input type="text" name="firstName" value="${contact.firstName}"/>
+
+                                    <label for="firstName">LastName:</label>
+                                    <input type="text" name="lastName" value="${contact.lastName}"/>
+
+                                    <label for="firstName">Address:</label>
+                                    <input type="text" name="address" value="${contact.address}"/>
+
+                                    <label for="firstName">ZipCode:</label>
+                                    <input type="text" name="zipCode" value="${contact.zipCode}"/>
+
+                                    <label for="firstName">City:</label>
+                                    <input type="text" name="city" value="${contact.city}"/>
+
+                                    <label for="firstName">Email:</label>
+                                    <input type="text" name="email" value="${contact.email}"/>
+
+                                    <label for="contact_status">Status: </label>
+                                        <select name="status" id="contact_status" value="${contact.contact_status}">
+                                            <c:forEach var="contact_status" items="${contact.contact_status}">
                                                 <option value="${contact_status}">${contact_status}</option>
                                             </c:forEach>
                                         </select>
-                                    </td>
-                                </tr>
-                                <input type="submit" value="Create new contact"/>
+                                <input type="submit" value="Update contact"/>
                             </form>
                         </div>
                         <br>
@@ -186,48 +177,6 @@
                     </main>
     </div>
 </div>
-
-
-<%--            --%>
-<%--    <form action="contacts" th:action="@{/edit}" th:object="${contact}" method="post">--%>
-<%--        <table border="0" cellpadding="10">--%>
-<%--            <tr>--%>
-<%--                <td>Contact ID:</td>--%>
-<%--                <td>--%>
-<%--                    <input type="text" th:field="*{id}" readonly="readonly" />--%>
-<%--                </td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>Contact Name:</td>--%>
-<%--                <td>--%>
-<%--                    <input type="text" th:field="*{firstName}" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                    <input type="text" th:field="*{lasttName}" />--%>
-<%--                </td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>Address:</td>--%>
-<%--                <td><input type="text" th:field="*{address}" /></td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>ZipCode:</td>--%>
-<%--                <td><input type="text" th:field="*{zipCode}" /></td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>City:</td>--%>
-<%--                <td><input type="text" th:field="*{city}" /></td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>Email:</td>--%>
-<%--                <td><input type="text" th:field="*{email}" /></td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td colspan="2"><button type="submit">Save</button> </td>--%>
-<%--            </tr>--%>
-<%--        </table>--%>
-<%--    </form>--%>
-
 
 </body>
 </html>

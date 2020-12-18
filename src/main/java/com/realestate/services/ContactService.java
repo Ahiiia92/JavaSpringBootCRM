@@ -19,7 +19,7 @@ public interface ContactService {
     Contact createContact(Contact contact);
 
     Contact updateContact(long id, Contact contact);
-    Contact updateContact(Contact contact);
+    void updateContact(Contact contact);
 
     Contact save(Contact contact);
 

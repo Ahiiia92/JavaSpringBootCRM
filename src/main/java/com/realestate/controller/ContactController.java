@@ -91,8 +91,7 @@ public class ContactController {
     }
 
     @GetMapping("/{id}/edit")
-    public ModelAndView showEditContactPage(Model model, @PathVariable Long id) {
-        ModelAndView mav = new ModelAndView("edit");
+    public String showEditContactPage(Model model, @PathVariable Long id) {
         Contact contact = contactService.getContactById(id);
         List<String> statusList = Arrays.asList(
                 Contact_status.LEAD.toString(),
@@ -101,28 +100,14 @@ public class ContactController {
                 Contact_status.CLOSE_WIN.toString()
         );
         model.addAttribute("statusList", statusList);
-        mav.addObject("contact", contact);
-
-        return mav;
+        model.addAttribute(("contact", contact));
+        return "show";
     }
 
-    // TODO: EDIT
-    @PutMapping("/{id}/edit")
+    @PostMapping("/{id}/edit")
     public String updateContact(Model model, @PathVariable Long id, @ModelAttribute Contact contactDetails) {
-        Contact contact = contactService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Contact doesn't exist with id: " + id));
-        contact.setFirstName(contactDetails.getFirstName());
-        contact.setLastName(contactDetails.getLastName());
-        contact.setAddress(contactDetails.getAddress());
-        contact.setZipCode(contactDetails.getZipCode());
-        contact.setCity(contactDetails.getCity());
-        contact.setEmail(contactDetails.getEmail());
-        contact.setUser(contactDetails.getUser());
-        contact.setContact_status(contactDetails.getContact_status());
-
-        Contact updatedContact = contactService.save(contact);
-        ResponseEntity.ok(updatedContact);
-        model.addAttribute("contact", contactService.getContactById(contact.getId()));
+        contactService.updateContact(contactDetails);
+        model.addAttribute("contact", contactService.getContactById(contactDetails.getId()));
         return "redirect:/admin/dashboard/contacts";
     }
 
