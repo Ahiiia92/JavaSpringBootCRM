@@ -143,33 +143,47 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <form action="edit" method="post">
-                                <input type="hidden" name="id" value="${contact.id}">
+                            <form action="edit" method="post" class="col-6 mx-auto m-4">
+                                <div class="form-group">
+                                    <input type="hidden" name="id" value="${contact.id}">
                                     <label for="firstName">FirstName:</label>
-                                    <input type="text" name="firstName" value="${contact.firstName}"/>
+                                    <input  class="form-control" placeholder="Firstname" type="text" name="firstName" value="${contact.firstName}"/>
+                                </div>
 
-                                    <label for="firstName">LastName:</label>
-                                    <input type="text" name="lastName" value="${contact.lastName}"/>
+                                <div class="form-group">
+                                    <label for="LastName">LastName:</label>
+                                    <input class="form-control" placeholder="Lastname" type="text" name="lastName" value="${contact.lastName}"/>
+                                </div>
 
-                                    <label for="firstName">Address:</label>
-                                    <input type="text" name="address" value="${contact.address}"/>
+                                <div class="form-group">
+                                    <label for="address">Address:</label>
+                                    <input class="form-control" placeholder="Address" type="text" name="address" value="${contact.address}"/>
+                                </div>
 
-                                    <label for="firstName">ZipCode:</label>
-                                    <input type="text" name="zipCode" value="${contact.zipCode}"/>
+                                <div class="form-group">
+                                    <label for="zipCode">ZipCode:</label>
+                                    <input class="form-control" placeholder="ZipCode" type="text" name="zipCode" value="${contact.zipCode}"/>
+                                </div>
 
-                                    <label for="firstName">City:</label>
-                                    <input type="text" name="city" value="${contact.city}"/>
+                                <div class="form-group">
+                                    <label for="city">City:</label>
+                                    <input class="form-control" placeholder="City" type="text" name="city" value="${contact.city}"/>
+                                </div>
 
-                                    <label for="firstName">Email:</label>
-                                    <input type="text" name="email" value="${contact.email}"/>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input class="form-control" placeholder="Email" type="text" name="email" value="${contact.email}"/>
+                                </div>
 
+                                <div class="form-group">
                                     <label for="contact_status">Status: </label>
-                                        <select name="status" id="contact_status" value="${contact.contact_status}">
+                                        <select class="form-control" placeholder="Status" name="status" id="contact_status" value="${contact.contact_status}">
                                             <c:forEach var="contact_status" items="${contact.contact_status}">
                                                 <option value="${contact_status}">${contact_status}</option>
                                             </c:forEach>
                                         </select>
-                                <input type="submit" value="Update contact"/>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Update contact"/>
                             </form>
                         </div>
                         <br>

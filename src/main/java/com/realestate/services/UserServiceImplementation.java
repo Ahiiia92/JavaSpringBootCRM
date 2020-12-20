@@ -39,6 +39,11 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public User updateUser(User userDetails) {
+        return userRepository.save(userDetails);
+    }
+
+    @Override
     public User save(User user) {
         return userRepository.save(user);
     }

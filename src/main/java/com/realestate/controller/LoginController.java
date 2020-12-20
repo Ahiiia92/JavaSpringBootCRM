@@ -2,6 +2,7 @@ package com.realestate.controller;
 
 import com.realestate.exception.ResourceNotFoundException;
 import com.realestate.model.Contact;
+import com.realestate.model.Role;
 import com.realestate.model.User;
 import com.realestate.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,10 @@ public class LoginController {
     // NEW
     @GetMapping("/new")
     public String showNewUserPage(Model model, @ModelAttribute User user) {
-        List<String> roleList = Arrays.asList("Sales Team", "Sales Manager");
+        List<String> roleList = Arrays.asList(
+                Role.SALES_TEAM.toString(),
+                Role.SALES_MANAGER.toString()
+        );
         model.addAttribute("user", user);
         model.addAttribute("roleList", roleList);
         return "sign_up";
@@ -71,17 +75,12 @@ public class LoginController {
         return "success";
     }
 
-    // EDIT USER WITH UI
-//    @GetMapping("/users/{id}")
-//    public String editUser(@PathVariable Long id, @RequestBody User userDetails) {
-//        User user = userService.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
-//        updateUser(id, userDetails);
-//    }
-
     @GetMapping("users/{id}/show")
     public String showUser(Model model, @PathVariable Long id) {
-        List<String> roleList = Arrays.asList("Sales Team", "Sales Manager");
+        List<String> roleList = Arrays.asList(
+                Role.SALES_TEAM.toString(),
+                Role.SALES_MANAGER.toString()
+        );
         model.addAttribute("roleList", roleList);
 
         User user = userService.findById(id).orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + id));
@@ -93,18 +92,9 @@ public class LoginController {
     // TODO: UPDATE USER WITH UI
     @PutMapping("users/{id}/show")
     public String updateUser(Model model, @PathVariable Long id, @RequestBody User userDetails) {
-        User user = userService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
-        user.setFirstname(userDetails.getFirstname());
-        user.setLastname(userDetails.getLastname());
-        user.setEmail(userDetails.getEmail());
-        user.setPassword(userDetails.getPassword());
-        user.setRole(userDetails.getRole());
-        user.setUsername(userDetails.getUsername());
-
-        User updatedUser = userService.save(user);
-        ResponseEntity.ok(updatedUser);
-        model.addAttribute("user", userService.findById(updatedUser.getId()));
+        User user = userService.updateUser(userDetails);
+        ResponseEntity.ok(user);
+        model.addAttribute("user", userService.findById(user.getId()));
         return "redirect:/show";
     }
 

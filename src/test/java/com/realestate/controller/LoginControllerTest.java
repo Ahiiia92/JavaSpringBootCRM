@@ -1,5 +1,6 @@
 package com.realestate.controller;
 
+import com.realestate.model.Role;
 import com.realestate.model.User;
 import com.realestate.services.UserService;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class LoginControllerTest {
 
     @Test
     public void test_showPage_renderAUser() throws Exception {
-        User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", "sales repo");
+        User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", Role.SALES_MANAGER);
         Mockito.when(mockUserService.findById((long) 1)).thenReturn(java.util.Optional.of(expectedUser));
 
         mockMvc.perform(get("/login/users/1"))
@@ -45,14 +46,14 @@ public class LoginControllerTest {
 
     @Test
     public void test_PostMethod_withCorrectAttributes() throws Exception {
-        User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", "sales repo");
+        User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", Role.SALES_TEAM);
         mockMvc.perform(post("/login/users")
                 .param("firstname", "Marie")
                 .param("lastname", "Hess")
                 .param("username", "Marie")
                 .param("email", "m@a.de")
                 .param("password", "marie")
-                .param("role", "sales repo"))
+                .param("role", "SALES_TEAM"))
                 .andExpect(status().isOk());
 
         Mockito.verify(mockUserService).createNewUser(expectedUser);
@@ -60,7 +61,7 @@ public class LoginControllerTest {
 
     @Test
     public void test_DeleteMethod_withId() throws Exception {
-        User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", "sales repo");
+        User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", Role.SALES_TEAM);
         mockMvc.perform(delete("/login/users/1/delete"))
                 .andExpect(status().isOk());
         Mockito.verify(mockUserService).delete(expectedUser);

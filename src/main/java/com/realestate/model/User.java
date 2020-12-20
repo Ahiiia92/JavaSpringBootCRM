@@ -14,13 +14,13 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private String role;
+    private Role role;
     @OneToMany(cascade=CascadeType.ALL)
     private List<Contact> contacts;
 
     public User() { super(); }
 
-    public User(String firstname, String lastname, String username, String email, String password, String role) {
+    public User(String firstname, String lastname, String username, String email, String password, Role role) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
@@ -85,11 +85,11 @@ public class User {
         this.contacts = contacts;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

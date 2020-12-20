@@ -1,6 +1,7 @@
 package com.realestate.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,9 @@ public class Contact {
     private String email;
     private Contact_status contact_status;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    private LocalDateTime created_at;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name = "sales_user_id")
     private User user;
 

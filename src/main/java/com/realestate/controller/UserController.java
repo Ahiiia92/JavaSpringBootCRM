@@ -1,12 +1,16 @@
 package com.realestate.controller;
 
+import com.realestate.model.Contact_status;
+import com.realestate.model.Role;
 import com.realestate.model.User;
 import com.realestate.services.UserService;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +32,12 @@ public class UserController {
     // TODO: Test: Works
     // create user rest api
     @PostMapping("/users")
-    public User createUser(@RequestBody User user) {
+    public User createUser(Model model, @RequestBody User user) {
+        List<String> roleList = Arrays.asList(
+                Role.SALES_TEAM.toString(),
+                Role.SALES_MANAGER.toString()
+        );
+        model.addAttribute("roleList", roleList);
         return userService.createNewUser(user);
     }
 

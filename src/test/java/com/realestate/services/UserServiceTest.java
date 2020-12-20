@@ -2,6 +2,7 @@ package com.realestate.services;
 
 import com.realestate.model.Contact;
 import com.realestate.model.Contact_status;
+import com.realestate.model.Role;
 import com.realestate.model.User;
 import com.realestate.repository.ContactDAO;
 import com.realestate.repository.UserDAO;
@@ -26,7 +27,7 @@ public class UserServiceTest {
 
         @Test
         public void whenCreateNewUserIsCalledSaveIsCalledOnRepository() {
-            User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", "sales repo");
+            User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", Role.SALES_TEAM);
             userServiceImplementation.createNewUser(expectedUser);
             Mockito.verify(repo).save(expectedUser);
         }
@@ -39,7 +40,7 @@ public class UserServiceTest {
 
 //    @Test
 //    public void whenFindUserByIdIsCalledWithExistingUserItIsReturned() {
-//        User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", "sales repo");
+//        User expectedUser = new User("Marie", "Hess", "Marie", "m@a.de", "marie", Role.SALES_TEAM);
 //        Mockito.when(repo.findById((long) 1)).thenReturn(java.util.Optional.of(expectedUser));
 //
 //        Optional<User> actualUser = userServiceImplementation.findById((long) 1);

@@ -3,21 +3,16 @@ package com.realestate.controller;
 import com.realestate.exception.ResourceNotFoundException;
 import com.realestate.model.Contact;
 import com.realestate.model.Contact_status;
-import com.realestate.model.User;
-import com.realestate.repository.ContactDAO;
+
 import com.realestate.services.ContactService;
-import com.realestate.services.ContactServiceImplementation;
-import oracle.ucp.proxy.annotation.Post;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,14 +39,7 @@ public class ContactController {
         return "contacts";
     }
 
-//    @PostMapping("")
-//    public String createNewContact(Model model, @RequestBody Contact contact) {
-//        contactService.createContact(contact);
-//        model.addAttribute("contact", contactService.getAllContacts());
-//        return "contacts";
-//    }
-
-    // NEW Avec une page differente // MAPPING WORKS + PARAMS
+    // NEW
     @GetMapping("/new")
     public String showNewContactPage(Model model, @ModelAttribute Contact contact) {
         Contact contactCreatead = new Contact();
@@ -65,7 +53,8 @@ public class ContactController {
         model.addAttribute("contact", contact);
         return "new_contact";
     }
-    // CREATE // MAPPING WORKS // WOOOORKS (only select doesn't)
+
+    // CREATE
     @PostMapping("/save")
     public String addNewContact(ModelMap model, @ModelAttribute Contact contact) {
         contactService.createContact(contact);
@@ -100,14 +89,14 @@ public class ContactController {
                 Contact_status.CLOSE_WIN.toString()
         );
         model.addAttribute("statusList", statusList);
-        model.addAttribute(("contact", contact));
+        model.addAttribute("contact", contact);
         return "show";
     }
 
-    @PostMapping("/{id}/edit")
-    public String updateContact(Model model, @PathVariable Long id, @ModelAttribute Contact contactDetails) {
-        contactService.updateContact(contactDetails);
-        model.addAttribute("contact", contactService.getContactById(contactDetails.getId()));
+    @PutMapping("/{id}/show")
+    public String updateContact(Model model, @ModelAttribute Contact contactDetails) {
+        Contact contact = contactService.updateContact(contactDetails);
+        model.addAttribute("contact", contact);
         return "redirect:/admin/dashboard/contacts";
     }
 

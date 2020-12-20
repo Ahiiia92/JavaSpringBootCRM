@@ -151,6 +151,7 @@
                                         <th>City</th>
                                         <th>Status</th>
                                         <th>Account Manager</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -163,41 +164,61 @@
                                         <td>${contact.zipCode}</td>
                                         <td>${contact.city}</td>
                                         <td>${contact.contact_status}</td>
-<%--                                        <td>${contact.user.username}</td>--%>
+                                        <td>contact.user.username</td>
+                                        <td>
+                                            <form action="dashboard" method="delete">
+                                                <input type="submit" name="delete_user" value="Delete" />
+                                                <input type="hidden" name="user" value="${contact.id}" />
+                                            </form>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <br>
                                 <br>
                                 <h1>Edit Contact</h1>
-                                <form action="edit" method="put">
-                                    <label for="firstName">FirstName:</label>
-                                    <input type="text" name="firstName"/>
-                                    <label for="firstName">LastName:</label>
-                                    <input type="text" name="lastName"/>
-                                    <label for="firstName">Address:</label>
-                                    <input type="text" name="address"/>
-                                    <label for="firstName">ZipCode:</label>
-                                    <input type="text" name="zipCode"/>
-                                    <label for="firstName">City:</label>
-                                    <input type="text" name="city"/>
-                                    <label for="firstName">Email:</label>
-                                    <input type="text" name="email"/>
-                                    <label for="status">Status:</label>
-                                    <select name="status" id="contact_status">
-                                        <c:forEach var="contact_status" items="${statusList}">
-                                            <option value="${contact_status}">${contact_status}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <input type="submit" value="Update Contact"/>
-                                </form>
+                                    <form action="edit" method="put" class="col-6 mx-auto m-4">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${contact.id}">
+                                                <label for="firstName">FirstName:</label>
+                                                <input  class="form-control" placeholder="Firstname" type="text" name="firstName" value="${contact.firstName}"/>
+                                            </div>
 
-                                <td>
-                                    <form action="dashboard" method="delete">
-                                        <input type="submit" name="delete_user" value="Delete" />
-                                        <input type="hidden" name="user" value="${contact.id}" />
-                                    </form>
-                                </td>
+                                            <div class="form-group">
+                                                <label for="LastName">LastName:</label>
+                                                <input class="form-control" placeholder="Lastname" type="text" name="lastName" value="${contact.lastName}"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="address">Address:</label>
+                                                <input class="form-control" placeholder="Address" type="text" name="address" value="${contact.address}"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="zipCode">ZipCode:</label>
+                                                <input class="form-control" placeholder="ZipCode" type="text" name="zipCode" value="${contact.zipCode}"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="city">City:</label>
+                                                <input class="form-control" placeholder="City" type="text" name="city" value="${contact.city}"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email">Email:</label>
+                                                <input class="form-control" placeholder="Email" type="text" name="email" value="${contact.email}"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="status">Status:</label>
+                                                <select class="form-control" placeholder="Status" name="status" id="contact_status" value="${contact.contact_status}">
+                                                    <c:forEach var="contact_status" items="${statusList}">
+                                                        <option value="${contact_status}">${contact_status}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                            <input type="submit" class="btn btn-primary" value="Update contact"/>
+                                        </form>
                             </div>
                                 </div>
                             </c:if>
@@ -229,27 +250,42 @@
                                             </tbody>
                                         </table>
                                         <br>
-                                        <form action="show" method="put">
-                                            <label>Firstname:</label>
-                                            <input type="text" name="firstname"/>
+                                        <h1>Edit User:</h1>
+                                        <form action="show" method="put" class="col-6 mx-auto m-4">
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="${user.id}">
+                                                <label>Firstname:</label>
+                                                <input class="form-control" placeholder="Firstname" type="text" name="firstname" value="${user.firstname}"/>
+                                            </div>
 
-                                            <label>Laststname:</label>
-                                            <input type="text" name="lastname"/>
+                                            <div class="form-group">
+                                                <label>Laststname:</label>
+                                                <input class="form-control" placeholder="Lastname" type="text" name="lastname" value="${user.lastname}"/>
+                                            </div>
 
-                                            <label>Username:</label>
-                                            <input type="text" name="username"/>
+                                            <div class="form-group">
+                                                <label>Username:</label>
+                                                <input class="form-control" placeholder="Username" type="text" name="username" value="${user.username}"/>
+                                            </div>
 
-                                            <label>Email:</label>
-                                            <input type="text" name="email"/>
+                                            <div class="form-group">
+                                                <label>Email:</label>
+                                                <input class="form-control" placeholder="Email" type="text" name="email" value="${user.email}"/>
+                                            </div>
 
-                                            <label>Password:</label>
-                                            <input type="password" name="password"/>
+                                            <div class="form-group">
+                                                <label>Password:</label>
+                                                <input class="form-control" placeholder="Password" type="password" name="password" value="${user.password}"/>
+                                            </div>
 
-                                            <select name="role" id="role">
-                                                <c:forEach var="role" items="${roleList}">
-                                                    <option value="${role}">${role}</option>
-                                                </c:forEach>
-                                            </select>
+                                            <div class="form-group">
+                                                <label for="role">Role:</label>
+                                                <select class="form-control" placeholder="Role" name="role" id="role" value="${user.role}">
+                                                    <c:forEach var="role" items="${roleList}">
+                                                        <option value="${role}">${role}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
                                             <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
                                         </form>
                                     </div>
@@ -282,21 +318,31 @@
                                             </table>
                                             <br>
                                             <h2>Edit Property</h2>
-                                            <form action="/{id}" method="put">
-                                                <label>Availability:</label>
-                                                <input type="text" name="availability"/>
+                                            <form action="/{id}" method="put" class="col-6 mx-auto m-4">
+                                                <div class="form-group">
+                                                    <label>Availability:</label>
+                                                    <input class="form-control" placeholder="Availability" type="text" name="availability" value="${property.availability}"/>
+                                                </div>
 
-                                                <label>Price:</label>
-                                                <input type="number" name="price"/>
+                                                <div class="form-group">
+                                                    <label>Price:</label>
+                                                    <input class="form-control" placeholder="Price" type="number" name="price"/>
+                                                </div>
 
-                                                <label>Rooms:</label>
-                                                <input type="number" name="rooms"/>
+                                                <div class="form-group">
+                                                    <label>Rooms:</label>
+                                                    <input class="form-control" placeholder="Rooms" type="number" name="rooms"/>
+                                                </div>
 
-                                                <label>Surface:</label>
-                                                <input type="number" name="surface"/>
+                                                <div class="form-group">
+                                                    <label>Surface:</label>
+                                                    <input class="form-control" placeholder="Surface" type="number" name="surface"/>
+                                                </div>
 
-                                                <label>Client:</label>
-                                                <input type="text" name="contact_id"/>
+                                                <div class="form-group">
+                                                    <label>Client:</label>
+                                                    <input class="form-control" placeholder="Client" type="text" name="contact_id"/>
+                                                </div>
 
                                                 <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
                                             </form>

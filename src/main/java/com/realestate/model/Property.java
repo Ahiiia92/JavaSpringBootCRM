@@ -15,7 +15,7 @@ public class Property {
     private double surface;
     private int price;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id")
     private Contact contact;
 

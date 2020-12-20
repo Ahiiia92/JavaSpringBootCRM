@@ -14,57 +14,44 @@
     <script src="${pageContext.request.contextPath}/webjars/jquery/3.0.0/jquery.min.js" ></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">HomePage - CRM Estate - Website Here</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/dashboard/contacts">List of Contact<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<%@include file="_navbar.jsp"%>
 <div class="container">
     <div class="row mt-5">
         <div class="col">
             <h3>Sign-Up</h3>
-            <form action="register" method="post">
+            <form action="register" method="post" class="col-6 mx-auto m-4">
+                <div class="form-group">
                     <label>Firstname:</label>
-                    <input type="text" name="firstname"/>
+                    <input class="form-control" placeholder="Firstname" type="text" name="firstname"/>
+                </div>
 
-                    <label>Laststname:</label>
-                    <input type="text" name="lastname"/>
+                <div class="form-group">
+                    <label>Lastsname:</label>
+                    <input class="form-control" placeholder="Lastname" type="text" name="lastname"/>
+                </div>
 
+                <div class="form-group">
                     <label>Username:</label>
-                    <input type="text" name="username"/>
+                    <input class="form-control" placeholder="Username" type="text" name="username"/>
+                </div>
 
+                <div class="form-group">
                     <label>Email:</label>
-                    <input type="text" name="email"/>
+                    <input class="form-control" placeholder="Email" type="text" name="email"/>
+                </div>
 
+                <div class="form-group">
                     <label>Password:</label>
-                    <input type="text" name="password"/>
-
-                    <select name="role" id="role">
+                    <input class="form-control" placeholder="Password" type="password" name="password"/>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select class="form-control" placeholder="Role" name="role" id="role">
                         <c:forEach var="role" items="${roleList}">
                             <option value="${role}">${role}</option>
                         </c:forEach>
                     </select>
+                </div>
                 <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
             </form>
 

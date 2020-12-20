@@ -134,22 +134,37 @@
             <br>
             <h2>Add a Property</h2>
             <br>
-            <form action="" method="post">
-                <label for="firstName">Availability:</label>
-                <input type="text" name="availability"/>
-                <label for="firstName">Price:</label>
-                <input type="number" name="price"/>
-                <label for="firstName">Surface:</label>
-                <input type="number" name="surface"/>
-                <label for="firstName">Rooms:</label>
-                <input type="number" name="rooms"/>
-                <label for="contact_id">Client:</label>
-                <select name="contact" id="contact">
+            <form action="/{id}" method="put" class="col-6 mx-auto m-4">
+                <div class="form-group">
+                    <label>Availability:</label>
+                    <input class="form-control" placeholder="Availability" type="text" name="availability" value="${property.availability}"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Price:</label>
+                    <input class="form-control" placeholder="Price" type="number" name="price"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Rooms:</label>
+                    <input class="form-control" placeholder="Rooms" type="number" name="rooms"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Surface:</label>
+                    <input class="form-control" placeholder="Surface" type="number" name="surface"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Client:</label>
+                    <select class="form-control" placeholder="Client" type="text" name="contact_id" id="contact">
                     <c:forEach var="contact" items="${contactList}">
-                        <option value="${contact}">${contact.lastname}</option>
+                        <option value="${contact}">${contact.id} - ${contact.lastName}</option>
                     </c:forEach>
-                </select>
-                <input type="submit" value="Create new Property"/>
+                    </select>
+                </div>
+
+                <p><input type="submit" value="Submit" class="btn btn-primary"/> <input type="reset" value="Reset" class="btn btn-primary"/></p>
             </form>
             <br>
             <br>
