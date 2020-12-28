@@ -33,7 +33,6 @@ public class Contact {
 
     public Contact(String firstName, String lastName, String email, String Address, String zipCode, String city, Contact_status contact_status) {
         super();
-//        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = Address;

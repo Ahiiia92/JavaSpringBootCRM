@@ -38,7 +38,7 @@ public class PropertyController {
         List<Property> propertyList = propertyService.findAllProperty();
         List<Contact> contactList = contactService.getAllContacts();
         model.addAttribute("properties", propertyList);
-        model.addAttribute("contact", contactList);
+        model.addAttribute("contacts", contactList);
         return "properties";
     }
 

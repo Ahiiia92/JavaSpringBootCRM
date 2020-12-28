@@ -155,9 +155,13 @@
                     <input class="form-control" placeholder="Surface" type="number" name="surface"/>
                 </div>
 
+                ${contact}
+                ${contact.get(0).lastName}
+                ${contactList}
+
                 <div class="form-group">
                     <label>Client:</label>
-                    <select class="form-control" placeholder="Client" type="text" name="contact_id" id="contact">
+                    <select class="form-control" placeholder="Client" type="text" name="contact" id="contact">
                     <c:forEach var="contact" items="${contactList}">
                         <option value="${contact}">${contact.id} - ${contact.lastName}</option>
                     </c:forEach>

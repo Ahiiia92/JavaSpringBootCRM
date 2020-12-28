@@ -5,6 +5,7 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>CRM Real Estate</title>
+
     <link rel="shortcut icon" type="image/jpg" href="https://s1.qwant.com/thumbr/0x380/b/7/0137125dfbc48df83d7c9eddac9fed2356b09ca6c795ff3c222e5b1d01eddb/home-icon2.png?u=https%3A%2F%2Fsharepointmaven.com%2Fwp-content%2Fuploads%2F2016%2F06%2Fhome-icon2.png&q=0&b=1&p=0&a=1"/>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">

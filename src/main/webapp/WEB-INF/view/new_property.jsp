@@ -55,14 +55,13 @@
                     <label for="firstName">Rooms:</label>
                     <input type="number" name="rooms"/>
                     <label for="contact_id">Client:</label>
-                    <select name="contact" id="contact">
+                    <select class="form-control" placeholder="Client" type="text" name="contact" id="contact">
                         <c:forEach var="contact" items="${contactList}">
-                            <option value="${contact}">${contact.lastname}</option>
+                            <option value="${contact}">${contact.id} - ${contact.firtName} ${contact.lastName}</option>
                         </c:forEach>
                     </select>
                     <input type="submit" value="Create new Property"/>
                 </form>
-
 
                 <a href="/admin/dashboard" class="btn btn-primary">Dashboard</a>
                 <a href="/" class="btn btn-primary"">Home</a>

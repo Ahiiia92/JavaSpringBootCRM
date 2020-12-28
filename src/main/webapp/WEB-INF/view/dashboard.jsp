@@ -140,7 +140,7 @@
                             <td>${contact.address}</td>
                             <td>${contact.zipCode}</td>
                             <td>${contact.city}</td>
-                            <td>TO DO</td>
+                            <td>${contact.user.firstname} ${contact.user.lastname}</td>
                             <td>${contact.contact_status}</td>
                                 <%--                            <td>${contact.user_id}</td>--%>
                             <td><a href="/admin/dashboard/contacts/${contact.id}/show">Show</a></td>

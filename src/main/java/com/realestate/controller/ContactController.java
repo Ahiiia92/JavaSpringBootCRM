@@ -4,8 +4,10 @@ import com.realestate.exception.ResourceNotFoundException;
 import com.realestate.model.Contact;
 import com.realestate.model.Contact_status;
 
+import com.realestate.model.User;
 import com.realestate.services.ContactService;
 
+import com.realestate.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ import java.util.List;
 public class ContactController {
     @Autowired
     private ContactService contactService;
+
+    @Autowired
+    private UserService userService;
 
     // INDEX ==> Works
     @GetMapping("")
@@ -49,6 +54,7 @@ public class ContactController {
                 Contact_status.CLOSE_LOST.toString(),
                 Contact_status.CLOSE_WIN.toString()
         );
+        model.addAttribute("usersList", userService.getAllUsers().toString());
         model.addAttribute("statusList", statusList);
         model.addAttribute("contact", contact);
         return "new_contact";
@@ -58,6 +64,8 @@ public class ContactController {
     @PostMapping("/save")
     public String addNewContact(ModelMap model, @ModelAttribute Contact contact) {
         contactService.createContact(contact);
+        User user = contact.getUser();
+        model.addAttribute("user", user);
         model.addAttribute("contact", contactService.getAllContacts());
         return "redirect:/admin/dashboard/contacts";
     }

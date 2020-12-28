@@ -150,6 +150,14 @@
                                         </c:forEach>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="account_manager">Account Manager:</label>
+                                    <select class="form-control" placeholder="Account Manager" name="user" id="user">
+                                        <c:forEach var="user" items="${usersList}">
+                                            <option value="${user}">${user}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
                                 <input type="submit" value="Create Contact"/>
                             </form>
                     </div>

@@ -164,7 +164,7 @@
                                         <td>${contact.zipCode}</td>
                                         <td>${contact.city}</td>
                                         <td>${contact.contact_status}</td>
-                                        <td>contact.user.username</td>
+                                        <td>${contact.user.firstname} ${contact.user.lastname}</td>
                                         <td>
                                             <form action="dashboard" method="delete">
                                                 <input type="submit" name="delete_user" value="Delete" />
